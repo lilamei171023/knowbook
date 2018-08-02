@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="discuss" />
+        <module name="knowbook" />
+        <module name="knowbook-discuss" />
+        <module name="knowbook-home" />
+        <module name="knowbook-mine" />
+        <module name="knowbook-publish" />
+        <module name="knowbook-purchase" />
+        <module name="kownbook" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="discuss" target="1.8" />
+      <module name="knowbook" target="1.5" />
+      <module name="knowbook-discuss" target="1.8" />
+      <module name="knowbook-home" target="1.8" />
+      <module name="knowbook-mine" target="1.8" />
+      <module name="knowbook-publish" target="1.8" />
+      <module name="knowbook-purchase" target="1.8" />
+      <module name="kownbook" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
