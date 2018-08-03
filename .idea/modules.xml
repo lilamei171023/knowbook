@@ -3,12 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/knowbook.iml" filepath="$PROJECT_DIR$/knowbook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/knowbook-common/knowbook-common.iml" filepath="$PROJECT_DIR$/knowbook-common/knowbook-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/knowbook-core/knowbook-core.iml" filepath="$PROJECT_DIR$/knowbook-core/knowbook-core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/knowbook-discuss/knowbook-discuss.iml" filepath="$PROJECT_DIR$/knowbook-discuss/knowbook-discuss.iml" />
-      <module fileurl="file://$PROJECT_DIR$/knowbook-home/knowbook-home.iml" filepath="$PROJECT_DIR$/knowbook-home/knowbook-home.iml" />
-      <module fileurl="file://$PROJECT_DIR$/knowbook-mine/knowbook-mine.iml" filepath="$PROJECT_DIR$/knowbook-mine/knowbook-mine.iml" />
-      <module fileurl="file://$PROJECT_DIR$/knowbook-publish/knowbook-publish.iml" filepath="$PROJECT_DIR$/knowbook-publish/knowbook-publish.iml" />
-      <module fileurl="file://$PROJECT_DIR$/knowbook-purchase/knowbook-purchase.iml" filepath="$PROJECT_DIR$/knowbook-purchase/knowbook-purchase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/knowbook-web/knowbook-web.iml" filepath="$PROJECT_DIR$/knowbook-web/knowbook-web.iml" />
     </modules>
   </component>
 </project>

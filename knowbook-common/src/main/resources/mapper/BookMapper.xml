@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.excellent.knowbookcommon.dao.BookMapper">
+  <resultMap id="BaseResultMap" type="com.excellent.knowbookcommon.model.pojo.Book">
+    <id column="book_id" jdbcType="VARCHAR" property="bookId" />
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="book_name" jdbcType="VARCHAR" property="bookName" />
+    <result column="book_befroe_price" jdbcType="DOUBLE" property="bookBefroePrice" />
+    <result column="book_now_price" jdbcType="DOUBLE" property="bookNowPrice" />
+    <result column="book_picture" jdbcType="VARCHAR" property="bookPicture" />
+    <result column="book_style" jdbcType="VARCHAR" property="bookStyle" />
+    <result column="book_theme" jdbcType="VARCHAR" property="bookTheme" />
+    <result column="book_langerages" jdbcType="VARCHAR" property="bookLangerages" />
+    <result column="book_is_sell" jdbcType="INTEGER" property="bookIsSell" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="deteled" jdbcType="INTEGER" property="deteled" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.excellent.knowbookcommon.model.pojo.Book">
+    <result column="book_info" jdbcType="LONGVARCHAR" property="bookInfo" />
+    <result column="book_remarks" jdbcType="LONGVARCHAR" property="bookRemarks" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    book_id, id, book_name, book_befroe_price, book_now_price, book_picture, book_style, 
+    book_theme, book_langerages, book_is_sell, create_time, create_user, update_time, 
+    update_user, deteled
+  </sql>
+  <sql id="Blob_Column_List">
+    book_info, book_remarks
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from book
+    where book_id = #{bookId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from book
+    where book_id = #{bookId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.excellent.knowbookcommon.model.pojo.Book">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into book (book_id, book_name, book_befroe_price, 
+      book_now_price, book_picture, book_style, 
+      book_theme, book_langerages, book_is_sell, 
+      create_time, create_user, update_time, 
+      update_user, deteled, book_info, 
+      book_remarks)
+    values (#{bookId,jdbcType=VARCHAR}, #{bookName,jdbcType=VARCHAR}, #{bookBefroePrice,jdbcType=DOUBLE}, 
+      #{bookNowPrice,jdbcType=DOUBLE}, #{bookPicture,jdbcType=VARCHAR}, #{bookStyle,jdbcType=VARCHAR}, 
+      #{bookTheme,jdbcType=VARCHAR}, #{bookLangerages,jdbcType=VARCHAR}, #{bookIsSell,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updateUser,jdbcType=VARCHAR}, #{deteled,jdbcType=INTEGER}, #{bookInfo,jdbcType=LONGVARCHAR}, 
+      #{bookRemarks,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.excellent.knowbookcommon.model.pojo.Book">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into book
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bookId != null">
+        book_id,
+      </if>
+      <if test="bookName != null">
+        book_name,
+      </if>
+      <if test="bookBefroePrice != null">
+        book_befroe_price,
+      </if>
+      <if test="bookNowPrice != null">
+        book_now_price,
+      </if>
+      <if test="bookPicture != null">
+        book_picture,
+      </if>
+      <if test="bookStyle != null">
+        book_style,
+      </if>
+      <if test="bookTheme != null">
+        book_theme,
+      </if>
+      <if test="bookLangerages != null">
+        book_langerages,
+      </if>
+      <if test="bookIsSell != null">
+        book_is_sell,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateUser != null">
+        update_user,
+      </if>
+      <if test="deteled != null">
+        deteled,
+      </if>
+      <if test="bookInfo != null">
+        book_info,
+      </if>
+      <if test="bookRemarks != null">
+        book_remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bookId != null">
+        #{bookId,jdbcType=VARCHAR},
+      </if>
+      <if test="bookName != null">
+        #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookBefroePrice != null">
+        #{bookBefroePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="bookNowPrice != null">
+        #{bookNowPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="bookPicture != null">
+        #{bookPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="bookStyle != null">
+        #{bookStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="bookTheme != null">
+        #{bookTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="bookLangerages != null">
+        #{bookLangerages,jdbcType=VARCHAR},
+      </if>
+      <if test="bookIsSell != null">
+        #{bookIsSell,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="deteled != null">
+        #{deteled,jdbcType=INTEGER},
+      </if>
+      <if test="bookInfo != null">
+        #{bookInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bookRemarks != null">
+        #{bookRemarks,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.excellent.knowbookcommon.model.pojo.Book">
+    update book
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bookName != null">
+        book_name = #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookBefroePrice != null">
+        book_befroe_price = #{bookBefroePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="bookNowPrice != null">
+        book_now_price = #{bookNowPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="bookPicture != null">
+        book_picture = #{bookPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="bookStyle != null">
+        book_style = #{bookStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="bookTheme != null">
+        book_theme = #{bookTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="bookLangerages != null">
+        book_langerages = #{bookLangerages,jdbcType=VARCHAR},
+      </if>
+      <if test="bookIsSell != null">
+        book_is_sell = #{bookIsSell,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="deteled != null">
+        deteled = #{deteled,jdbcType=INTEGER},
+      </if>
+      <if test="bookInfo != null">
+        book_info = #{bookInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="bookRemarks != null">
+        book_remarks = #{bookRemarks,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where book_id = #{bookId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.excellent.knowbookcommon.model.pojo.Book">
+    update book
+    set id = #{id,jdbcType=INTEGER},
+      book_name = #{bookName,jdbcType=VARCHAR},
+      book_befroe_price = #{bookBefroePrice,jdbcType=DOUBLE},
+      book_now_price = #{bookNowPrice,jdbcType=DOUBLE},
+      book_picture = #{bookPicture,jdbcType=VARCHAR},
+      book_style = #{bookStyle,jdbcType=VARCHAR},
+      book_theme = #{bookTheme,jdbcType=VARCHAR},
+      book_langerages = #{bookLangerages,jdbcType=VARCHAR},
+      book_is_sell = #{bookIsSell,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      deteled = #{deteled,jdbcType=INTEGER},
+      book_info = #{bookInfo,jdbcType=LONGVARCHAR},
+      book_remarks = #{bookRemarks,jdbcType=LONGVARCHAR}
+    where book_id = #{bookId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.excellent.knowbookcommon.model.pojo.Book">
+    update book
+    set id = #{id,jdbcType=INTEGER},
+      book_name = #{bookName,jdbcType=VARCHAR},
+      book_befroe_price = #{bookBefroePrice,jdbcType=DOUBLE},
+      book_now_price = #{bookNowPrice,jdbcType=DOUBLE},
+      book_picture = #{bookPicture,jdbcType=VARCHAR},
+      book_style = #{bookStyle,jdbcType=VARCHAR},
+      book_theme = #{bookTheme,jdbcType=VARCHAR},
+      book_langerages = #{bookLangerages,jdbcType=VARCHAR},
+      book_is_sell = #{bookIsSell,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      deteled = #{deteled,jdbcType=INTEGER}
+    where book_id = #{bookId,jdbcType=VARCHAR}
+  </update>
+</mapper>
