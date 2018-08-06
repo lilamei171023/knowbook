@@ -1,7 +1,9 @@
 package com.excellent.knowbookcore.service.impl;
 
+import com.excellent.knowbookcommon.dao.UsersMapper;
 import com.excellent.knowbookcommon.model.enums.ResultEnum;
 import com.excellent.knowbookcommon.model.exception.KownBookException;
+import com.excellent.knowbookcommon.model.pojo.Users;
 import com.excellent.knowbookcore.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,9 +40,5 @@ public class UsersServiceImpl implements UsersService {
         return usersDao.insertSelective(users);
     }
 
-    @Override
-    public List<Users> findAll() {
-        return usersDao.selectAll();
-    }
 
 }

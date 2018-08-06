@@ -10,7 +10,13 @@ public class Book implements Serializable {
 
     private String bookName;
 
-    private Double bookBefroePrice;
+    private String bookAuthor;
+
+    private String bookQuality;
+
+    private String bookPress;
+
+    private Double bookBeforePrice;
 
     private Double bookNowPrice;
 
@@ -64,12 +70,36 @@ public class Book implements Serializable {
         this.bookName = bookName;
     }
 
-    public Double getBookBefroePrice() {
-        return bookBefroePrice;
+    public String getBookAuthor() {
+        return bookAuthor;
     }
 
-    public void setBookBefroePrice(Double bookBefroePrice) {
-        this.bookBefroePrice = bookBefroePrice;
+    public void setBookAuthor(String bookAuthor) {
+        this.bookAuthor = bookAuthor;
+    }
+
+    public String getBookQuality() {
+        return bookQuality;
+    }
+
+    public void setBookQuality(String bookQuality) {
+        this.bookQuality = bookQuality;
+    }
+
+    public String getBookPress() {
+        return bookPress;
+    }
+
+    public void setBookPress(String bookPress) {
+        this.bookPress = bookPress;
+    }
+
+    public Double getBookBeforePrice() {
+        return bookBeforePrice;
+    }
+
+    public void setBookBeforePrice(Double bookBeforePrice) {
+        this.bookBeforePrice = bookBeforePrice;
     }
 
     public Double getBookNowPrice() {

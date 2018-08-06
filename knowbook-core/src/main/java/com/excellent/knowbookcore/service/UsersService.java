@@ -1,5 +1,7 @@
 package com.excellent.knowbookcore.service;
 
+import com.excellent.knowbookcommon.model.pojo.Users;
+
 import java.util.List;
 
 /**
@@ -12,5 +14,4 @@ public interface UsersService {
 
      Integer insertUser(Users users);
 
-     List<Users> findAll();
 }

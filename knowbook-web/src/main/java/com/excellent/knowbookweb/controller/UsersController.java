@@ -1,5 +1,6 @@
 package com.excellent.knowbookweb.controller;
 
+import com.excellent.knowbookcommon.model.pojo.Users;
 import com.excellent.knowbookcommon.model.vo.ResultVo;
 import com.excellent.knowbookcore.service.UsersService;
 import com.excellent.knowbookcommon.utils.ResultUtils;

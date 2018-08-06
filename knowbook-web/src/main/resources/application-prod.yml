@@ -4,7 +4,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3308/kownbook?useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/knowbook?useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
-    username: root
+    username: only
     password: 123456
