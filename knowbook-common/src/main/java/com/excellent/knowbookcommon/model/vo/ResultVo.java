@@ -6,7 +6,6 @@ package com.excellent.knowbookcommon.model.vo;
  * Description: 返回给前端统一用ResultVo类型
  */
 public class ResultVo<T>{
-
     private Integer code;
     private String  msg;
     private  T  data;
