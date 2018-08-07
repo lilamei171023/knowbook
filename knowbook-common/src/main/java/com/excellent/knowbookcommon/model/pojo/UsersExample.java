@@ -515,6 +515,66 @@ public class UsersExample {
             return (Criteria) this;
         }
 
+        public Criteria andWalletIsNull() {
+            addCriterion("wallet is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWalletIsNotNull() {
+            addCriterion("wallet is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWalletEqualTo(Double value) {
+            addCriterion("wallet =", value, "wallet");
+            return (Criteria) this;
+        }
+
+        public Criteria andWalletNotEqualTo(Double value) {
+            addCriterion("wallet <>", value, "wallet");
+            return (Criteria) this;
+        }
+
+        public Criteria andWalletGreaterThan(Double value) {
+            addCriterion("wallet >", value, "wallet");
+            return (Criteria) this;
+        }
+
+        public Criteria andWalletGreaterThanOrEqualTo(Double value) {
+            addCriterion("wallet >=", value, "wallet");
+            return (Criteria) this;
+        }
+
+        public Criteria andWalletLessThan(Double value) {
+            addCriterion("wallet <", value, "wallet");
+            return (Criteria) this;
+        }
+
+        public Criteria andWalletLessThanOrEqualTo(Double value) {
+            addCriterion("wallet <=", value, "wallet");
+            return (Criteria) this;
+        }
+
+        public Criteria andWalletIn(List<Double> values) {
+            addCriterion("wallet in", values, "wallet");
+            return (Criteria) this;
+        }
+
+        public Criteria andWalletNotIn(List<Double> values) {
+            addCriterion("wallet not in", values, "wallet");
+            return (Criteria) this;
+        }
+
+        public Criteria andWalletBetween(Double value1, Double value2) {
+            addCriterion("wallet between", value1, value2, "wallet");
+            return (Criteria) this;
+        }
+
+        public Criteria andWalletNotBetween(Double value1, Double value2) {
+            addCriterion("wallet not between", value1, value2, "wallet");
+            return (Criteria) this;
+        }
+
         public Criteria andUserPictureIsNull() {
             addCriterion("user_picture is null");
             return (Criteria) this;
@@ -972,66 +1032,6 @@ public class UsersExample {
 
         public Criteria andDeteledNotBetween(Integer value1, Integer value2) {
             addCriterion("deteled not between", value1, value2, "deteled");
-            return (Criteria) this;
-        }
-
-        public Criteria andWalletIsNull() {
-            addCriterion("wallet is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andWalletIsNotNull() {
-            addCriterion("wallet is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andWalletEqualTo(Double value) {
-            addCriterion("wallet =", value, "wallet");
-            return (Criteria) this;
-        }
-
-        public Criteria andWalletNotEqualTo(Double value) {
-            addCriterion("wallet <>", value, "wallet");
-            return (Criteria) this;
-        }
-
-        public Criteria andWalletGreaterThan(Double value) {
-            addCriterion("wallet >", value, "wallet");
-            return (Criteria) this;
-        }
-
-        public Criteria andWalletGreaterThanOrEqualTo(Double value) {
-            addCriterion("wallet >=", value, "wallet");
-            return (Criteria) this;
-        }
-
-        public Criteria andWalletLessThan(Double value) {
-            addCriterion("wallet <", value, "wallet");
-            return (Criteria) this;
-        }
-
-        public Criteria andWalletLessThanOrEqualTo(Double value) {
-            addCriterion("wallet <=", value, "wallet");
-            return (Criteria) this;
-        }
-
-        public Criteria andWalletIn(List<Double> values) {
-            addCriterion("wallet in", values, "wallet");
-            return (Criteria) this;
-        }
-
-        public Criteria andWalletNotIn(List<Double> values) {
-            addCriterion("wallet not in", values, "wallet");
-            return (Criteria) this;
-        }
-
-        public Criteria andWalletBetween(Double value1, Double value2) {
-            addCriterion("wallet between", value1, value2, "wallet");
-            return (Criteria) this;
-        }
-
-        public Criteria andWalletNotBetween(Double value1, Double value2) {
-            addCriterion("wallet not between", value1, value2, "wallet");
             return (Criteria) this;
         }
     }

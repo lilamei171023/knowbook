@@ -2,8 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.excellent.knowbookcommon.dao.CommentMapper">
   <resultMap id="BaseResultMap" type="com.excellent.knowbookcommon.model.pojo.Comment">
-    <id column="commment_id" jdbcType="VARCHAR" property="commmentId" />
+    <id column="comment_id" jdbcType="VARCHAR" property="commentId" />
     <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="comment_info" jdbcType="VARCHAR" property="commentInfo" />
     <result column="topic_id" jdbcType="VARCHAR" property="topicId" />
     <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -11,9 +12,6 @@
     <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="deleted" jdbcType="INTEGER" property="deleted" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.excellent.knowbookcommon.model.pojo.Comment">
-    <result column="comment_info" jdbcType="LONGVARCHAR" property="commentInfo" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -74,29 +72,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    commment_id, id, topic_id, user_id, create_time, create_user, update_user, update_time, 
-    deleted
+    comment_id, id, comment_info, topic_id, user_id, create_time, create_user, update_user, 
+    update_time, deleted
   </sql>
-  <sql id="Blob_Column_List">
-    comment_info
-  </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.excellent.knowbookcommon.model.pojo.CommentExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    'true' as QUERYID,
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from comment
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" parameterType="com.excellent.knowbookcommon.model.pojo.CommentExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -112,29 +90,27 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from comment
-    where commment_id = #{commmentId,jdbcType=VARCHAR}
+    where comment_id = #{commentId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from comment
-    where commment_id = #{commmentId,jdbcType=VARCHAR}
+    where comment_id = #{commentId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.excellent.knowbookcommon.model.pojo.Comment">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into comment (commment_id, topic_id, user_id, 
-      create_time, create_user, update_user, 
-      update_time, deleted, comment_info
+    insert into comment (comment_id, comment_info, topic_id, 
+      user_id, create_time, create_user, 
+      update_user, update_time, deleted
       )
-    values (#{commmentId,jdbcType=VARCHAR}, #{topicId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER}, #{commentInfo,jdbcType=LONGVARCHAR}
+    values (#{commentId,jdbcType=VARCHAR}, #{commentInfo,jdbcType=VARCHAR}, #{topicId,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, 
+      #{updateUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.excellent.knowbookcommon.model.pojo.Comment">
@@ -143,8 +119,11 @@
     </selectKey>
     insert into comment
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="commmentId != null">
-        commment_id,
+      <if test="commentId != null">
+        comment_id,
+      </if>
+      <if test="commentInfo != null">
+        comment_info,
       </if>
       <if test="topicId != null">
         topic_id,
@@ -167,13 +146,13 @@
       <if test="deleted != null">
         deleted,
       </if>
-      <if test="commentInfo != null">
-        comment_info,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="commmentId != null">
-        #{commmentId,jdbcType=VARCHAR},
+      <if test="commentId != null">
+        #{commentId,jdbcType=VARCHAR},
+      </if>
+      <if test="commentInfo != null">
+        #{commentInfo,jdbcType=VARCHAR},
       </if>
       <if test="topicId != null">
         #{topicId,jdbcType=VARCHAR},
@@ -196,9 +175,6 @@
       <if test="deleted != null">
         #{deleted,jdbcType=INTEGER},
       </if>
-      <if test="commentInfo != null">
-        #{commentInfo,jdbcType=LONGVARCHAR},
-      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.excellent.knowbookcommon.model.pojo.CommentExample" resultType="java.lang.Long">
@@ -210,11 +186,14 @@
   <update id="updateByExampleSelective" parameterType="map">
     update comment
     <set>
-      <if test="record.commmentId != null">
-        commment_id = #{record.commmentId,jdbcType=VARCHAR},
+      <if test="record.commentId != null">
+        comment_id = #{record.commentId,jdbcType=VARCHAR},
       </if>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.commentInfo != null">
+        comment_info = #{record.commentInfo,jdbcType=VARCHAR},
       </if>
       <if test="record.topicId != null">
         topic_id = #{record.topicId,jdbcType=VARCHAR},
@@ -237,34 +216,16 @@
       <if test="record.deleted != null">
         deleted = #{record.deleted,jdbcType=INTEGER},
       </if>
-      <if test="record.commentInfo != null">
-        comment_info = #{record.commentInfo,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map">
-    update comment
-    set commment_id = #{record.commmentId,jdbcType=VARCHAR},
-      id = #{record.id,jdbcType=INTEGER},
-      topic_id = #{record.topicId,jdbcType=VARCHAR},
-      user_id = #{record.userId,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      create_user = #{record.createUser,jdbcType=VARCHAR},
-      update_user = #{record.updateUser,jdbcType=VARCHAR},
-      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      deleted = #{record.deleted,jdbcType=INTEGER},
-      comment_info = #{record.commentInfo,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update comment
-    set commment_id = #{record.commmentId,jdbcType=VARCHAR},
+    set comment_id = #{record.commentId,jdbcType=VARCHAR},
       id = #{record.id,jdbcType=INTEGER},
+      comment_info = #{record.commentInfo,jdbcType=VARCHAR},
       topic_id = #{record.topicId,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -281,6 +242,9 @@
     <set>
       <if test="id != null">
         id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="commentInfo != null">
+        comment_info = #{commentInfo,jdbcType=VARCHAR},
       </if>
       <if test="topicId != null">
         topic_id = #{topicId,jdbcType=VARCHAR},
@@ -303,28 +267,13 @@
       <if test="deleted != null">
         deleted = #{deleted,jdbcType=INTEGER},
       </if>
-      <if test="commentInfo != null">
-        comment_info = #{commentInfo,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    where commment_id = #{commmentId,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.excellent.knowbookcommon.model.pojo.Comment">
-    update comment
-    set id = #{id,jdbcType=INTEGER},
-      topic_id = #{topicId,jdbcType=VARCHAR},
-      user_id = #{userId,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      create_user = #{createUser,jdbcType=VARCHAR},
-      update_user = #{updateUser,jdbcType=VARCHAR},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      deleted = #{deleted,jdbcType=INTEGER},
-      comment_info = #{commentInfo,jdbcType=LONGVARCHAR}
-    where commment_id = #{commmentId,jdbcType=VARCHAR}
+    where comment_id = #{commentId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.excellent.knowbookcommon.model.pojo.Comment">
     update comment
     set id = #{id,jdbcType=INTEGER},
+      comment_info = #{commentInfo,jdbcType=VARCHAR},
       topic_id = #{topicId,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -332,6 +281,6 @@
       update_user = #{updateUser,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       deleted = #{deleted,jdbcType=INTEGER}
-    where commment_id = #{commmentId,jdbcType=VARCHAR}
+    where comment_id = #{commentId,jdbcType=VARCHAR}
   </update>
 </mapper>

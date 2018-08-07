@@ -60,65 +60,65 @@
              <!--数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉-->
             <!--<domainObjectRenamingRule searchString="_" replaceString=""/>-->
         </table>
-        <table tableName="address" domainObjectName="Address" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
-            <property name="modelOnly" value="false"/>
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-            <!--数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉-->
-            <!--<domainObjectRenamingRule searchString="_" replaceString=""/>-->
-        </table>
-        <table tableName="attention" domainObjectName="Attention" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
-            <property name="modelOnly" value="false"/>
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-            <!--数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉-->
-            <!--<domainObjectRenamingRule searchString="_" replaceString=""/>-->
-        </table>
-        <table tableName="comment" domainObjectName="Comment" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
-            <property name="modelOnly" value="false"/>
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-            <!--数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉-->
-            <!--<domainObjectRenamingRule searchString="_" replaceString=""/>-->
-        </table>
-        <table tableName="my_collection" domainObjectName="MyCollection" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
-            <property name="modelOnly" value="false"/>
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-            <!--数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉-->
-            <!--<domainObjectRenamingRule searchString="_" replaceString=""/>-->
-        </table>
-        <table tableName="order_detail" domainObjectName="OrderDetail" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
-            <property name="modelOnly" value="false"/>
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-            <!--数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉-->
-            <!--<domainObjectRenamingRule searchString="_" replaceString=""/>-->
-        </table>
-        <table tableName="order_total" domainObjectName="OrderTotal" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
-            <property name="modelOnly" value="false"/>
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-            <!--数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉-->
-            <!--<domainObjectRenamingRule searchString="_" replaceString=""/>-->
-        </table>
-        <table tableName="sell_book" domainObjectName="SellBook" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
-            <property name="modelOnly" value="false"/>
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-            <!--数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉-->
-            <!--<domainObjectRenamingRule searchString="_" replaceString=""/>-->
-        </table>
-        <table tableName="shopping_car" domainObjectName="ShoppingCar" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
-            <property name="modelOnly" value="false"/>
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-            <!--数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉-->
-            <!--<domainObjectRenamingRule searchString="_" replaceString=""/>-->
-        </table>
-        <table tableName="topic" domainObjectName="Topic" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
-            <property name="modelOnly" value="false"/>
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-            <!--数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉-->
-            <!--<domainObjectRenamingRule searchString="_" replaceString=""/>-->
-        </table>
-        <table tableName="users" domainObjectName="Users" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
-            <property name="modelOnly" value="false"/>
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-            <!--数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉-->
-            <!--<domainObjectRenamingRule searchString="_" replaceString=""/>-->
-        </table>
+        <!--<table tableName="address" domainObjectName="Address" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">-->
+            <!--<property name="modelOnly" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+            <!--&lt;!&ndash;数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉&ndash;&gt;-->
+            <!--&lt;!&ndash;<domainObjectRenamingRule searchString="_" replaceString=""/>&ndash;&gt;-->
+        <!--</table>-->
+        <!--<table tableName="attention" domainObjectName="Attention" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">-->
+            <!--<property name="modelOnly" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+            <!--&lt;!&ndash;数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉&ndash;&gt;-->
+            <!--&lt;!&ndash;<domainObjectRenamingRule searchString="_" replaceString=""/>&ndash;&gt;-->
+        <!--</table>-->
+        <!--<table tableName="comment" domainObjectName="Comment" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">-->
+            <!--<property name="modelOnly" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+            <!--&lt;!&ndash;数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉&ndash;&gt;-->
+            <!--&lt;!&ndash;<domainObjectRenamingRule searchString="_" replaceString=""/>&ndash;&gt;-->
+        <!--</table>-->
+        <!--<table tableName="my_collection" domainObjectName="MyCollection" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">-->
+            <!--<property name="modelOnly" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+            <!--&lt;!&ndash;数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉&ndash;&gt;-->
+            <!--&lt;!&ndash;<domainObjectRenamingRule searchString="_" replaceString=""/>&ndash;&gt;-->
+        <!--</table>-->
+        <!--<table tableName="order_detail" domainObjectName="OrderDetail" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">-->
+            <!--<property name="modelOnly" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+            <!--&lt;!&ndash;数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉&ndash;&gt;-->
+            <!--&lt;!&ndash;<domainObjectRenamingRule searchString="_" replaceString=""/>&ndash;&gt;-->
+        <!--</table>-->
+        <!--<table tableName="order_total" domainObjectName="OrderTotal" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">-->
+            <!--<property name="modelOnly" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+            <!--&lt;!&ndash;数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉&ndash;&gt;-->
+            <!--&lt;!&ndash;<domainObjectRenamingRule searchString="_" replaceString=""/>&ndash;&gt;-->
+        <!--</table>-->
+        <!--<table tableName="sell_book" domainObjectName="SellBook" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">-->
+            <!--<property name="modelOnly" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+            <!--&lt;!&ndash;数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉&ndash;&gt;-->
+            <!--&lt;!&ndash;<domainObjectRenamingRule searchString="_" replaceString=""/>&ndash;&gt;-->
+        <!--</table>-->
+        <!--<table tableName="shopping_car" domainObjectName="ShoppingCar" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">-->
+            <!--<property name="modelOnly" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+            <!--&lt;!&ndash;数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉&ndash;&gt;-->
+            <!--&lt;!&ndash;<domainObjectRenamingRule searchString="_" replaceString=""/>&ndash;&gt;-->
+        <!--</table>-->
+        <!--<table tableName="topic" domainObjectName="Topic" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">-->
+            <!--<property name="modelOnly" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+            <!--&lt;!&ndash;数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉&ndash;&gt;-->
+            <!--&lt;!&ndash;<domainObjectRenamingRule searchString="_" replaceString=""/>&ndash;&gt;-->
+        <!--</table>-->
+        <!--<table tableName="users" domainObjectName="Users" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">-->
+            <!--<property name="modelOnly" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+            <!--&lt;!&ndash;数据库中表名有时我们都会带个前缀，而实体又不想带前缀，这个配置可以把实体的前缀去掉&ndash;&gt;-->
+            <!--&lt;!&ndash;<domainObjectRenamingRule searchString="_" replaceString=""/>&ndash;&gt;-->
+        <!--</table>-->
     </context>
 </generatorConfiguration>

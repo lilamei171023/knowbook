@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.excellent.knowbookcommon.dao.sudao.SubBookMapper">
+    <resultMap id="BaseResultMap" type="com.excellent.knowbookcommon.model.pojo.Book">
+        <id column="book_id" jdbcType="VARCHAR" property="bookId" />
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="book_name" jdbcType="VARCHAR" property="bookName" />
+        <result column="book_author" jdbcType="VARCHAR" property="bookAuthor" />
+        <result column="book_quality" jdbcType="VARCHAR" property="bookQuality" />
+        <result column="book_Press" jdbcType="VARCHAR" property="bookPress" />
+        <result column="book_before_price" jdbcType="DOUBLE" property="bookBeforePrice" />
+        <result column="book_now_price" jdbcType="DOUBLE" property="bookNowPrice" />
+        <result column="book_picture" jdbcType="VARCHAR" property="bookPicture" />
+        <result column="book_style" jdbcType="VARCHAR" property="bookStyle" />
+        <result column="book_theme" jdbcType="VARCHAR" property="bookTheme" />
+        <result column="book_language" jdbcType="VARCHAR" property="bookLanguage" />
+        <result column="book_remarks" jdbcType="VARCHAR" property="bookRemarks" />
+        <result column="book_is_sell" jdbcType="INTEGER" property="bookIsSell" />
+        <result column="collection_count" jdbcType="INTEGER" property="collectionCount" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+        <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+        <result column="deteled" jdbcType="INTEGER" property="deteled" />
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.excellent.knowbookcommon.model.pojo.Book">
+        <result column="book_info" jdbcType="LONGVARCHAR" property="bookInfo" />
+    </resultMap>
+    <select id="queryBookStyle" resultType="java.lang.String">
+        select distinct book_style
+        from book
+        where deteled=0;
+    </select>
+
+    <select id="queryBookTheme" resultType="java.lang.String">
+        select distinct book_theme
+        from book
+        where deteled=0;
+    </select>
+
+</mapper>
