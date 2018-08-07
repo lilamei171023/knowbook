@@ -446,72 +446,72 @@ public class AddressExample {
         }
 
         public Criteria andAddresseeNameIsNull() {
-            addCriterion("addressee-name is null");
+            addCriterion("addressee_name is null");
             return (Criteria) this;
         }
 
         public Criteria andAddresseeNameIsNotNull() {
-            addCriterion("addressee-name is not null");
+            addCriterion("addressee_name is not null");
             return (Criteria) this;
         }
 
         public Criteria andAddresseeNameEqualTo(String value) {
-            addCriterion("addressee-name =", value, "addresseeName");
+            addCriterion("addressee_name =", value, "addresseeName");
             return (Criteria) this;
         }
 
         public Criteria andAddresseeNameNotEqualTo(String value) {
-            addCriterion("addressee-name <>", value, "addresseeName");
+            addCriterion("addressee_name <>", value, "addresseeName");
             return (Criteria) this;
         }
 
         public Criteria andAddresseeNameGreaterThan(String value) {
-            addCriterion("addressee-name >", value, "addresseeName");
+            addCriterion("addressee_name >", value, "addresseeName");
             return (Criteria) this;
         }
 
         public Criteria andAddresseeNameGreaterThanOrEqualTo(String value) {
-            addCriterion("addressee-name >=", value, "addresseeName");
+            addCriterion("addressee_name >=", value, "addresseeName");
             return (Criteria) this;
         }
 
         public Criteria andAddresseeNameLessThan(String value) {
-            addCriterion("addressee-name <", value, "addresseeName");
+            addCriterion("addressee_name <", value, "addresseeName");
             return (Criteria) this;
         }
 
         public Criteria andAddresseeNameLessThanOrEqualTo(String value) {
-            addCriterion("addressee-name <=", value, "addresseeName");
+            addCriterion("addressee_name <=", value, "addresseeName");
             return (Criteria) this;
         }
 
         public Criteria andAddresseeNameLike(String value) {
-            addCriterion("addressee-name like", value, "addresseeName");
+            addCriterion("addressee_name like", value, "addresseeName");
             return (Criteria) this;
         }
 
         public Criteria andAddresseeNameNotLike(String value) {
-            addCriterion("addressee-name not like", value, "addresseeName");
+            addCriterion("addressee_name not like", value, "addresseeName");
             return (Criteria) this;
         }
 
         public Criteria andAddresseeNameIn(List<String> values) {
-            addCriterion("addressee-name in", values, "addresseeName");
+            addCriterion("addressee_name in", values, "addresseeName");
             return (Criteria) this;
         }
 
         public Criteria andAddresseeNameNotIn(List<String> values) {
-            addCriterion("addressee-name not in", values, "addresseeName");
+            addCriterion("addressee_name not in", values, "addresseeName");
             return (Criteria) this;
         }
 
         public Criteria andAddresseeNameBetween(String value1, String value2) {
-            addCriterion("addressee-name between", value1, value2, "addresseeName");
+            addCriterion("addressee_name between", value1, value2, "addresseeName");
             return (Criteria) this;
         }
 
         public Criteria andAddresseeNameNotBetween(String value1, String value2) {
-            addCriterion("addressee-name not between", value1, value2, "addresseeName");
+            addCriterion("addressee_name not between", value1, value2, "addresseeName");
             return (Criteria) this;
         }
 

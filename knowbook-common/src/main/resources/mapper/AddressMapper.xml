@@ -7,7 +7,7 @@
     <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="addressee_info" jdbcType="VARCHAR" property="addresseeInfo" />
     <result column="addressee_phone" jdbcType="VARCHAR" property="addresseePhone" />
-    <result column="addressee-name" jdbcType="VARCHAR" property="addresseeName" />
+    <result column="addressee_name" jdbcType="VARCHAR" property="addresseeName" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="create_user" jdbcType="VARCHAR" property="createUser" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
@@ -73,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    address_id, id, user_id, addressee_info, addressee_phone, addressee-name, create_time, 
+    address_id, id, user_id, addressee_info, addressee_phone, addressee_name, create_time, 
     create_user, update_time, update_user, deleted
   </sql>
   <select id="selectByExample" parameterType="com.excellent.knowbookcommon.model.pojo.AddressExample" resultMap="BaseResultMap">
@@ -106,7 +106,7 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into address (address_id, user_id, addressee_info, 
-      addressee_phone, addressee-name, create_time, 
+      addressee_phone, addressee_name, create_time, 
       create_user, update_time, update_user, 
       deleted)
     values (#{addressId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{addresseeInfo,jdbcType=VARCHAR}, 
@@ -133,7 +133,7 @@
         addressee_phone,
       </if>
       <if test="addresseeName != null">
-        addressee-name,
+        addressee_name,
       </if>
       <if test="createTime != null">
         create_time,
@@ -209,7 +209,7 @@
         addressee_phone = #{record.addresseePhone,jdbcType=VARCHAR},
       </if>
       <if test="record.addresseeName != null">
-        addressee-name = #{record.addresseeName,jdbcType=VARCHAR},
+        addressee_name = #{record.addresseeName,jdbcType=VARCHAR},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -238,7 +238,7 @@
       user_id = #{record.userId,jdbcType=VARCHAR},
       addressee_info = #{record.addresseeInfo,jdbcType=VARCHAR},
       addressee_phone = #{record.addresseePhone,jdbcType=VARCHAR},
-      addressee-name = #{record.addresseeName,jdbcType=VARCHAR},
+      addressee_name = #{record.addresseeName,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       create_user = #{record.createUser,jdbcType=VARCHAR},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
@@ -264,7 +264,7 @@
         addressee_phone = #{addresseePhone,jdbcType=VARCHAR},
       </if>
       <if test="addresseeName != null">
-        addressee-name = #{addresseeName,jdbcType=VARCHAR},
+        addressee_name = #{addresseeName,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -290,7 +290,7 @@
       user_id = #{userId,jdbcType=VARCHAR},
       addressee_info = #{addresseeInfo,jdbcType=VARCHAR},
       addressee_phone = #{addresseePhone,jdbcType=VARCHAR},
-      addressee-name = #{addresseeName,jdbcType=VARCHAR},
+      addressee_name = #{addresseeName,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       create_user = #{createUser,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
