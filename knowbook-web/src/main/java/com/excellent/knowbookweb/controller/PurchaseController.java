@@ -1,15 +1,15 @@
 package com.excellent.knowbookweb.controller;
 
+import com.excellent.knowbookcommon.model.pojo.Address;
+import com.excellent.knowbookcommon.model.vo.AddressTotal;
 import com.excellent.knowbookcommon.model.vo.PurchasePage;
 import com.excellent.knowbookcommon.model.vo.ResultVo;
 import com.excellent.knowbookcommon.utils.ResultUtils;
 import com.excellent.knowbookcore.service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -32,6 +32,42 @@ public class PurchaseController {
 
         if(purchasePage != null){
             resultVo = ResultUtils.success(purchasePage);
+        }else{
+            resultVo = ResultUtils.fail();
+        }
+
+        return resultVo;
+    }
+
+    @RequestMapping(value = "/queryAddress", method = RequestMethod.GET)
+    public ResultVo<List<AddressTotal>> queryAddress(@RequestParam("userId") String userId){
+
+        List<AddressTotal> addressTotalList = purchaseService.queryAddressTotal(userId);
+        ResultVo resultVo;
+        if(addressTotalList != null){
+            resultVo = ResultUtils.success(addressTotalList);
+        }else {
+            resultVo = ResultUtils.fail();
+        }
+        return resultVo;
+    }
+
+    @PostMapping(value = "/updateAddress")
+    public ResultVo<Integer> updateAddress(@Valid Address address,@RequestParam(value = "userDefaultAddressId",defaultValue = "0") String userDefaultAddressId){
+
+        //得到前端传的值
+        address.setUserId(address.getUserId());
+        address.setAddressId(address.getAddressId());
+        address.setAddresseeInfo(address.getAddresseeInfo());
+        address.setAddresseeName(address.getAddresseeName());
+        address.setAddresseePhone(address.getAddresseePhone());
+
+        Integer i = purchaseService.updateAddress(address,userDefaultAddressId);
+
+        ResultVo resultVo;
+
+        if(i != 0){
+            resultVo = ResultUtils.success(i);
         }else{
             resultVo = ResultUtils.fail();
         }

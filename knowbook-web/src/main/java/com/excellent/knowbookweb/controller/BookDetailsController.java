@@ -47,13 +47,6 @@ public class BookDetailsController {
         myCollection.setBookId(myCollection.getBookId());
         myCollection.setUserId(myCollection.getUserId());
 
-        //默认数据
-        myCollection.setCreateUser("王晓旭");
-        myCollection.setCreateTime(new Date());
-        myCollection.setUpdateUser("wxx");
-        myCollection.setDeleted(0);
-
-
         ResultVo resultVo;
         Integer i = bookDetailsService.insertCollection(myCollection);
 

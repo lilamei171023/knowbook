@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -79,6 +80,12 @@ public class BookDetailsServiceImpl implements BookDetailsService{
     @Override
     public Integer insertCollection(MyCollection myCollection) {
 
+        //默认数据
+        myCollection.setCreateUser("王晓旭");
+        myCollection.setCreateTime(new Date());
+        myCollection.setUpdateUser("wxx");
+        myCollection.setDeleted(0);
+
         //插入到收藏表
         int insert = myCollectionMapper.insert(myCollection);
 
@@ -88,6 +95,6 @@ public class BookDetailsServiceImpl implements BookDetailsService{
         book.setCollectionCount(count);
         int i = bookMapper.updateByPrimaryKey(book);
 
-        return insert = i==1 ? 1 : 0;
+        return (insert==1 && i==1) ? 1 : 0;
     }
 }
