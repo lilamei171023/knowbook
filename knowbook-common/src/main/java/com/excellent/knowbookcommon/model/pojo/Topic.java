@@ -10,6 +10,8 @@ public class Topic implements Serializable {
 
     private String topicName;
 
+    private String topicInfo;
+
     private String topicPicture;
 
     private Integer topicPraise;
@@ -24,11 +26,9 @@ public class Topic implements Serializable {
 
     private String updateUser;
 
-    private String deleted;
+    private Integer deleted;
 
     private String label;
-
-    private String topicInfo;
 
     private static final long serialVersionUID = 1L;
 
@@ -54,6 +54,14 @@ public class Topic implements Serializable {
 
     public void setTopicName(String topicName) {
         this.topicName = topicName;
+    }
+
+    public String getTopicInfo() {
+        return topicInfo;
+    }
+
+    public void setTopicInfo(String topicInfo) {
+        this.topicInfo = topicInfo;
     }
 
     public String getTopicPicture() {
@@ -112,11 +120,11 @@ public class Topic implements Serializable {
         this.updateUser = updateUser;
     }
 
-    public String getDeleted() {
+    public Integer getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(String deleted) {
+    public void setDeleted(Integer deleted) {
         this.deleted = deleted;
     }
 
@@ -126,13 +134,5 @@ public class Topic implements Serializable {
 
     public void setLabel(String label) {
         this.label = label;
-    }
-
-    public String getTopicInfo() {
-        return topicInfo;
-    }
-
-    public void setTopicInfo(String topicInfo) {
-        this.topicInfo = topicInfo;
     }
 }

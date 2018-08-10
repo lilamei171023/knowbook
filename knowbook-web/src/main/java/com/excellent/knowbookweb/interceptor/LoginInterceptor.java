@@ -45,7 +45,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
                 return false;
             } else {
                 logger.info("--------------------------此用户已经存。-------------------------------");
-                session.setAttribute("userId", session.getAttribute("userId"));
+//                session.setAttribute("userId", session.getAttribute("userId"));
+                  session.setAttribute("userId", "002");
                 return true;
             }
 

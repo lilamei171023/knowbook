@@ -1,5 +1,6 @@
 package com.excellent.knowbookweb.controller;
 
+import com.excellent.knowbookcommon.model.pojo.Users;
 import com.excellent.knowbookcommon.model.vo.ResultVo;
 import com.excellent.knowbookcore.service.UsersService;
 import com.excellent.knowbookcommon.utils.ResultUtils;
@@ -53,19 +54,9 @@ public class UsersController {
 
     }
 
-    @GetMapping(value = "/findAll")
-    public ResultVo<Object>  findAll() {
-//        return usersService.findAll();
-        ResultVo resultVo;
-        resultVo = ResultUtils.success();
-        return resultVo;
-    }
-
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public ResultVo<Object> index() {
-        ResultVo resultVo;
-        resultVo = ResultUtils.success();
-        return resultVo;
+    @RequestMapping(value = "/findAll", method = RequestMethod.GET)
+    public List<Users> findAll() {
+        return usersService.selectAll();
 
     }
 

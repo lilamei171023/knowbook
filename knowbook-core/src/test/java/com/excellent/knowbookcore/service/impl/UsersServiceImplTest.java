@@ -1,5 +1,6 @@
 package com.excellent.knowbookcore.service.impl;
 
+import com.excellent.knowbookcommon.model.pojo.Users;
 import com.excellent.knowbookcore.service.UsersService;
 import org.junit.Assert;
 import org.junit.Test;
