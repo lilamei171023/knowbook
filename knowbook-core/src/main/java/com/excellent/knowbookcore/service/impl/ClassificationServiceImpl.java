@@ -9,12 +9,14 @@ import com.excellent.knowbookcommon.model.vo.BookTheme;
 import com.excellent.knowbookcommon.model.vo.ClassificationBook;
 import com.excellent.knowbookcommon.model.vo.ClassificationPage;
 import com.excellent.knowbookcore.service.ClassificationService;
+import com.sun.org.apache.xerces.internal.xs.StringList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author User wxxu
@@ -112,13 +114,16 @@ public class ClassificationServiceImpl implements ClassificationService {
 
         BookStyle bookStyle = null;
         for (int i = 0; i < stringList.size(); i++) {
+            //随机插入几个
+            Random random = new Random();
+            int j = random.nextInt(stringList.size());
+            bookStyle = new BookStyle();
+            bookStyle.setBookStyle(stringList.get(j));
+            bookStyleList.add(bookStyle);
             //限定显示个数
-            if(i==4){
+            if(bookStyleList.size() == 4){
                 break;
             }
-            bookStyle = new BookStyle();
-            bookStyle.setBookStyle(stringList.get(i));
-            bookStyleList.add(bookStyle);
         }
 
         return bookStyleList;
@@ -132,14 +137,17 @@ public class ClassificationServiceImpl implements ClassificationService {
         List<String> stringList = bookMapper.queryBookTheme();
 
         BookTheme bookTheme = null;
-        for (String str: stringList ) {
+        for (int i = 0; i < stringList.size(); i++) {
+            Random random = new Random();
+            int j = random.nextInt(stringList.size());
+
+            bookTheme = new BookTheme();
+            bookTheme.setBookTheme(stringList.get(j));
+            bookThemeList.add(bookTheme);
             //限定显示个数
             if(bookThemeList.size()==5){
                 break;
             }
-            bookTheme = new BookTheme();
-            bookTheme.setBookTheme(str);
-            bookThemeList.add(bookTheme);
         }
 
         return bookThemeList;

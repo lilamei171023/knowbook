@@ -84,10 +84,9 @@ public class BookDetailsServiceImpl implements BookDetailsService{
         myCollection.setCreateUser("王晓旭");
         myCollection.setCreateTime(new Date());
         myCollection.setUpdateUser("wxx");
-        myCollection.setDeleted(0);
 
         //插入到收藏表
-        int insert = myCollectionMapper.insert(myCollection);
+        int insert = myCollectionMapper.insertSelective(myCollection);
 
         //修改book收藏数量
         Book book = bookMapper.selectByPrimaryKey(myCollection.getBookId());
