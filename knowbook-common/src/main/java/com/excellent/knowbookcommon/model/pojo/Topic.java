@@ -1,33 +1,39 @@
 package com.excellent.knowbookcommon.model.pojo;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@Document(indexName = "topicindex", type = "topic")
 public class Topic implements Serializable {
+    //    @Id
     private String topicId;
 
     private Integer id;
-
+    //   @Field
     private String topicName;
-
+    //  @Field
     private String topicInfo;
-
+    //   @Field
     private String topicPicture;
-
+    //  @Field
     private Integer topicPraise;
-
+    //   @Field
     private String userId;
-
+    //   @Field
     private Date createTime;
-
+    //  @Field
     private String createUser;
-
+    //   @Field
     private Date updateTime;
-
+    //   @Field
     private String updateUser;
-
+    //   @Field
     private Integer deleted;
-
+    //  @Field
     private String label;
 
     private static final long serialVersionUID = 1L;

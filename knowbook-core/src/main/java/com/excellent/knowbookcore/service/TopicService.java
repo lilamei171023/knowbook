@@ -30,4 +30,12 @@ public interface TopicService {
 
      TopicDetails TopicDetails(String topicId);
 
+     String  saveTopic(Topic topic);
+
+     List<Topic> searchTopic(Integer pageNumber,
+                             Integer pageSize,
+                             String searchContent);
+
+     List<Topic> selectAllTopic();
+
 }

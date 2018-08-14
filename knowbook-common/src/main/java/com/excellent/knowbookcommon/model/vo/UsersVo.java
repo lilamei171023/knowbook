@@ -9,6 +9,7 @@ import lombok.Data;
  */
 @Data
 public class UsersVo {
+
     private String userName;
     private String userNumber;
     private String userPhone;

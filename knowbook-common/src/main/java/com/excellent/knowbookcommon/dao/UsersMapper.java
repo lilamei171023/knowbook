@@ -4,8 +4,7 @@ import com.excellent.knowbookcommon.model.pojo.Users;
 import com.excellent.knowbookcommon.model.pojo.UsersExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-
-public interface UsersMapper {
+public interface UsersMapper  {
     long countByExample(UsersExample example);
 
     int deleteByPrimaryKey(String userId);

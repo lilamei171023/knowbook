@@ -32,6 +32,10 @@ public class UsersServiceImplTest {
     }
 
     @Test
-    public void findAll() {
+    public void saveUsers() {
+        List<Users> usersList=usersService.selectAll();
+        for (Users users:usersList) {
+            usersService.saveUsers(users);
+        }
     }
 }

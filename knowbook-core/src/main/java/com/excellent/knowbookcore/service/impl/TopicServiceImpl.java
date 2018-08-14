@@ -5,16 +5,24 @@ import com.excellent.knowbookcommon.model.pojo.*;
 import com.excellent.knowbookcommon.model.vo.CommentVo;
 import com.excellent.knowbookcommon.model.vo.TopicDetails;
 import com.excellent.knowbookcommon.model.vo.TopicsVo;
+import com.excellent.knowbookcommon.repository.TopicRepository;
 import com.excellent.knowbookcore.service.CommentService;
 import com.excellent.knowbookcore.service.UsersService;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder;
+import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.excellent.knowbookcommon.dao.CommentMapper;
 import com.excellent.knowbookcommon.dao.TopicMapper;
 import com.excellent.knowbookcommon.model.dto.TopicPo;
 import com.excellent.knowbookcommon.model.pojo.TopicExample.Criteria;
 import com.excellent.knowbookcore.service.TopicService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
+import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -28,8 +36,7 @@ import java.util.*;
 public class TopicServiceImpl implements TopicService {
     @Autowired
     private TopicMapper topicMapper;
-//    @Autowired
-//    private CommentMapper commentMapper;
+
     @Autowired
     private UsersMapper usersMapper;
 
@@ -38,6 +45,9 @@ public class TopicServiceImpl implements TopicService {
 
     @Autowired
     private UsersService usersService;
+
+    @Autowired
+    private TopicRepository topicRepository;
 
 
     private static Logger logger = LoggerFactory.getLogger(TopicServiceImpl.class);
@@ -167,6 +177,7 @@ public class TopicServiceImpl implements TopicService {
 
     }
 
+
     /**
      * 通过topicId查询话题
      * @param topicId
@@ -200,6 +211,51 @@ public class TopicServiceImpl implements TopicService {
          topicDetails.setCreateTime(topic.getCreateTime());
 
         return topicDetails;
+    }
+
+
+    @Override
+    public String saveTopic(Topic topic) {
+        Topic topicResult = topicRepository.save(topic);
+        return topicResult.getTopicId();
+    }
+
+    @Override
+    public List<Topic> searchTopic(Integer pageNumber,
+                                   Integer pageSize,
+                                   String searchContent) {
+        // 分页参数
+        Pageable pageable = new PageRequest(pageNumber, pageSize);
+
+        // Function Score Query
+        FunctionScoreQueryBuilder functionScoreQueryBuilder = QueryBuilders.functionScoreQuery()
+                .add(QueryBuilders.boolQuery().should(QueryBuilders.matchQuery("topicname", searchContent)),
+                        ScoreFunctionBuilders.weightFactorFunction(1000))
+                .add(QueryBuilders.boolQuery().should(QueryBuilders.matchQuery("description", searchContent)),
+                        ScoreFunctionBuilders.weightFactorFunction(100));
+
+        // 创建搜索 DSL 查询
+        SearchQuery searchQuery = new NativeSearchQueryBuilder()
+                .withPageable(pageable)
+                .withQuery(functionScoreQueryBuilder).build();
+
+        logger.info("\n searchBook(): searchContent [" + searchContent + "] \n DSL  = \n " + searchQuery.getQuery().toString());
+
+        Page<Topic> searchPageResults = topicRepository.search(searchQuery);
+        return searchPageResults.getContent();
+    }
+
+    @Override
+    public List<Topic> selectAllTopic() {
+        TopicExample example = new TopicExample();
+        TopicExample.Criteria criteria = example.createCriteria();
+        criteria.andDeletedEqualTo(0);
+        List<Topic> list = topicMapper.selectByExample(example);
+        if (list.size() != 0) {
+            return list;
+        } else {
+            return null;
+        }
     }
 
 

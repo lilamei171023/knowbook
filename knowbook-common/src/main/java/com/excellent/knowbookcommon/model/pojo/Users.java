@@ -1,35 +1,41 @@
 package com.excellent.knowbookcommon.model.pojo;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@Document(indexName = "usersindex", type = "users")
 public class Users implements Serializable {
+    //  @Id
     private String userId;
 
     private Integer id;
-
+    //   @Field
     private String userName;
-
+    //  @Field
     private String userNumber;
-
+    //  @Field
     private String userPhone;
-
+    //  @Field
     private String userPassword;
-
+    //  @Field
     private String userPicture;
-
+    //  @Field
     private String userAddressId;
-
+    //   @Field
     private Date createTime;
-
+    //   @Field
     private String createUser;
-
+    //   @Field
     private Date updateTime;
-
+    //   @Field
     private String updateUser;
-
+    //  @Field
     private Integer deteled;
-
+    //  @Field
     private Double wallet;
 
     private static final long serialVersionUID = 1L;

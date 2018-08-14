@@ -108,4 +108,16 @@ public class TopicController {
         return resultVo;
     }
 
+//    @PostMapping(value = "/queryBySearchContent")
+//    public ResultVo<List<Topic>> queryBySearchContent(String searchContent){
+//        if("".equals(searchContent)||searchContent==null){
+//            List<Topic> list=topicService.selectAllTopic();
+//            return  ResultUtils.success(list);
+//        }else{
+//            List<Topic> list= topicService.searchTopic(searchContent);
+//            return  ResultUtils.success(list);
+//        }
+//
+//    }
+
 }

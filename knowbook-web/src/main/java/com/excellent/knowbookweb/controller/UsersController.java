@@ -5,10 +5,7 @@ import com.excellent.knowbookcommon.model.vo.ResultVo;
 import com.excellent.knowbookcore.service.UsersService;
 import com.excellent.knowbookcommon.utils.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -67,6 +64,18 @@ public class UsersController {
         return resultVo;
 
     }
+
+//    @PostMapping(value = "/queryBySearchContent")
+//    public ResultVo<List<Users>> queryBySearchContent(String searchContent){
+//        if("".equals(searchContent)||searchContent==null){
+//            List<Users> list=usersService.selectAllUsers();
+//            return  ResultUtils.success(list);
+//        }else{
+//            List<Users> list= usersService.searchUsers(searchContent);
+//            return  ResultUtils.success(list);
+//        }
+//
+//    }
 
 
 
