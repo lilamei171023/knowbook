@@ -2,6 +2,7 @@ package com.excellent.knowbookweb.controller;
 
 import com.excellent.knowbookcommon.model.pojo.Comment;
 import com.excellent.knowbookcommon.model.vo.ResultVo;
+import com.excellent.knowbookcommon.utils.CreateIDUtils;
 import com.excellent.knowbookcommon.utils.ResultUtils;
 import com.excellent.knowbookcore.service.CommentService;
 import org.slf4j.Logger;
@@ -35,7 +36,7 @@ public class CommentController {
     public ResultVo addCommit(@RequestBody Comment comment, HttpSession session){
         session.setAttribute("userId",002);
         comment.setUserId(session.getAttribute("userId").toString());
-        comment.setCommentId(UUID.randomUUID().toString().substring(0,30));
+        comment.setCommentId(CreateIDUtils.CreatId());
         logger.info(comment.getCommentId());
         int id=  commentService.addComment(comment);
         if(id!=0){

@@ -41,7 +41,7 @@ public class TopicController {
      */
     @RequestMapping(value = "/addTopic", method = RequestMethod.POST)
     public ResultVo addTopic(HttpSession session, @RequestBody TopicPo topicPo) {
-        session.setAttribute("userId", "001");
+//        session.setAttribute("userId", "001");
         topicPo.setUserId(session.getAttribute("userId").toString());
         if (topicService.addOneTopic(topicPo) != 0) {
             return ResultUtils.success("添加话题成功.");
@@ -88,20 +88,21 @@ public class TopicController {
         return resultVo;
 
     }
+
     /**
      * 查询话题详情页面
      */
-    @RequestMapping(value = "/showTopicDetails",method = RequestMethod.POST)
-    public ResultVo<TopicDetails> showTopicDetails( String topicId){
+    @RequestMapping(value = "/showTopicDetails", method = RequestMethod.POST)
+    public ResultVo<TopicDetails> showTopicDetails(String topicId) {
         ResultVo resultVo = new ResultVo();
         TopicDetails topicDetails;
-        try{
-            topicDetails=topicService.TopicDetails(topicId);
+        try {
+            topicDetails = topicService.TopicDetails(topicId);
             resultVo.setData(topicDetails);
             resultVo.setCode(ResultEnum.SUCCESS.getCode());
             resultVo.setMsg(ResultEnum.SUCCESS.getMsg());
 
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.error(e.getMessage());
             return ResultUtils.fail("话题详情页面查询失败.");
         }

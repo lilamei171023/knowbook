@@ -5,6 +5,7 @@ import com.excellent.knowbookcommon.model.pojo.*;
 import com.excellent.knowbookcommon.model.vo.CommentVo;
 import com.excellent.knowbookcommon.model.vo.TopicDetails;
 import com.excellent.knowbookcommon.model.vo.TopicsVo;
+import com.excellent.knowbookcommon.utils.CreateIDUtils;
 import com.excellent.knowbookcore.service.CommentService;
 import com.excellent.knowbookcore.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,7 @@ import java.util.*;
 public class TopicServiceImpl implements TopicService {
     @Autowired
     private TopicMapper topicMapper;
-//    @Autowired
-//    private CommentMapper commentMapper;
+
     @Autowired
     private UsersMapper usersMapper;
 
@@ -107,7 +107,7 @@ public class TopicServiceImpl implements TopicService {
     @Override
     public int addOneTopic(TopicPo topicPo) {
         Topic topic = new Topic();
-        topic.setTopicId(UUID.randomUUID().toString());
+        topic.setTopicId(CreateIDUtils.CreatId());
         topic.setTopicName(topicPo.getTopicName());
         topic.setTopicInfo(topicPo.getTopicInfo());
         if (topicPo.getTopicPicture() != null) {
