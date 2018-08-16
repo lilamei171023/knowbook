@@ -75,4 +75,19 @@ public class PurchaseController {
         return resultVo;
     }
 
+
+    @PostMapping("/payment")
+    public ResultVo<Integer> paymentSuccess(@RequestParam("userId") String userId,@RequestParam(value = "bookId",defaultValue = "0")String bookId){
+        ResultVo resultVo;
+
+        Integer i = purchaseService.payment(userId,bookId);
+        if( i!= null && i!= 0){
+            resultVo = ResultUtils.success(i);
+        }else {
+            resultVo = ResultUtils.fail();
+        }
+
+        return resultVo;
+    }
+
 }

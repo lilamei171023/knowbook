@@ -3,6 +3,7 @@ package com.excellent.knowbookcore.service.impl;
 import com.excellent.knowbookcommon.dao.SellBookMapper;
 import com.excellent.knowbookcommon.dao.UsersMapper;
 import com.excellent.knowbookcommon.dao.sudao.SubBookMapper;
+import com.excellent.knowbookcommon.model.exception.KownBookException;
 import com.excellent.knowbookcommon.model.pojo.*;
 import com.excellent.knowbookcommon.model.vo.BookStyle;
 import com.excellent.knowbookcommon.model.vo.BookTheme;
@@ -12,6 +13,7 @@ import com.excellent.knowbookcore.service.ClassificationService;
 import com.sun.org.apache.xerces.internal.xs.StringList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -23,6 +25,7 @@ import java.util.Random;
  * @description: 分类页实现类
  * @create 2018/8/6 20:40
  */
+@Transactional(rollbackFor = KownBookException.class)
 @Service
 public class ClassificationServiceImpl implements ClassificationService {
 

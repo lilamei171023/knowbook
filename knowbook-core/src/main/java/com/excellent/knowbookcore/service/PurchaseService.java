@@ -17,4 +17,8 @@ public interface PurchaseService {
 
     Integer updateAddress(Object...obs);
 
+    Integer insertShoppingCart(String userId,String bookId);
+
+    Integer payment(String userId,String bookId);
+
 }

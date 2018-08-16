@@ -11,6 +11,7 @@ import com.excellent.knowbookcore.service.PublishService;
 import com.qiniu.common.QiniuException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.UUID;
@@ -18,8 +19,11 @@ import java.util.UUID;
 /**
  * @author User wxxu
  * @description: 发布控制层
+ * //@Transactional这个注解说明这个方法就已经交由springboot事物管理.如果这个方法中有一个操作失败，就全部失败
  * @create 2018/8/8 17:24
  */
+
+@Transactional(rollbackFor = KownBookException.class)
 @Service
 public class PublishServiceImpl implements PublishService {
 

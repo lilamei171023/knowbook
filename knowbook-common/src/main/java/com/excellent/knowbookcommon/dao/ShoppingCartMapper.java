@@ -1,0 +1,28 @@
+package com.excellent.knowbookcommon.dao;
+
+import com.excellent.knowbookcommon.model.pojo.ShoppingCart;
+import com.excellent.knowbookcommon.model.pojo.ShoppingCartExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+public interface ShoppingCartMapper {
+    long countByExample(ShoppingCartExample example);
+
+    int deleteByPrimaryKey(String shoppingCartId);
+
+    int insert(ShoppingCart record);
+
+    int insertSelective(ShoppingCart record);
+
+    List<ShoppingCart> selectByExample(ShoppingCartExample example);
+
+    ShoppingCart selectByPrimaryKey(String shoppingCartId);
+
+    int updateByExampleSelective(@Param("record") ShoppingCart record, @Param("example") ShoppingCartExample example);
+
+    int updateByExample(@Param("record") ShoppingCart record, @Param("example") ShoppingCartExample example);
+
+    int updateByPrimaryKeySelective(ShoppingCart record);
+
+    int updateByPrimaryKey(ShoppingCart record);
+}

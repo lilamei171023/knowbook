@@ -5,11 +5,13 @@ import com.excellent.knowbookcommon.dao.MyCollectionMapper;
 import com.excellent.knowbookcommon.dao.SellBookMapper;
 import com.excellent.knowbookcommon.dao.UsersMapper;
 import com.excellent.knowbookcommon.dao.sudao.SubBookMapper;
+import com.excellent.knowbookcommon.model.exception.KownBookException;
 import com.excellent.knowbookcommon.model.pojo.*;
 import com.excellent.knowbookcommon.model.vo.BookDetailsPage;
 import com.excellent.knowbookcore.service.BookDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -20,6 +22,7 @@ import java.util.List;
  * @description: book详情页实现类
  * @create 2018/8/7 20:08
  */
+@Transactional(rollbackFor = KownBookException.class)
 @Service
 public class BookDetailsServiceImpl implements BookDetailsService{
 
