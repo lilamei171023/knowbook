@@ -16,6 +16,8 @@ public class Users implements Serializable {
 
     private String userPassword;
 
+    private Double wallet;
+
     private String userPicture;
 
     private String userAddressId;
@@ -29,8 +31,6 @@ public class Users implements Serializable {
     private String updateUser;
 
     private Integer deteled;
-
-    private Double wallet;
 
     private static final long serialVersionUID = 1L;
 
@@ -80,6 +80,14 @@ public class Users implements Serializable {
 
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
+    }
+
+    public Double getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(Double wallet) {
+        this.wallet = wallet;
     }
 
     public String getUserPicture() {
@@ -136,13 +144,5 @@ public class Users implements Serializable {
 
     public void setDeteled(Integer deteled) {
         this.deteled = deteled;
-    }
-
-    public Double getWallet() {
-        return wallet;
-    }
-
-    public void setWallet(Double wallet) {
-        this.wallet = wallet;
     }
 }

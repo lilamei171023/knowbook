@@ -1,7 +1,10 @@
 package com.excellent.knowbookcore.service.impl;
 
+import com.excellent.knowbookcommon.dao.sub.SubUsersMapper;
 import com.excellent.knowbookcommon.model.enums.ResultEnum;
 import com.excellent.knowbookcommon.model.exception.KownBookException;
+import com.excellent.knowbookcommon.model.pojo.Users;
+import com.excellent.knowbookcommon.model.pojo.UsersExample;
 import com.excellent.knowbookcore.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,14 +21,14 @@ import java.util.List;
 public class UsersServiceImpl implements UsersService {
 
     @Autowired
-    private UsersMapper usersDao;
+    private SubUsersMapper usersMapper;
     @Override
     public List<Users> queryUsers(String  userId) throws Exception{
-        if(userId==null){
-            throw new KownBookException(ResultEnum.ERROR);
+        if(userId==null||"".equals(userId)){
+            throw new KownBookException(ResultEnum.UIDEQUALNULL);
         }
         List<Users> usersList=new ArrayList<>();
-        Users users=usersDao.selectByPrimaryKey(userId);
+        Users users=usersMapper.selectByPrimaryKey(userId);
         usersList.add(users);
         return usersList;
     }
@@ -35,12 +38,24 @@ public class UsersServiceImpl implements UsersService {
         if(users.getUserName()==null){
             throw new KownBookException(ResultEnum.ERROR);
         }
-        return usersDao.insertSelective(users);
+        return usersMapper.insertSelective(users);
     }
 
     @Override
-    public List<Users> findAll() {
-        return usersDao.selectAll();
+    public List<Users> selectAll() {
+       return usersMapper.selectAll();
+
     }
+
+    @Override
+    public Users selectUserByUserId(String userId) {
+        UsersExample example=new UsersExample();
+        UsersExample.Criteria criteria=example.createCriteria();
+        criteria.andUserIdEqualTo(userId);
+        criteria.andDeteledEqualTo(0);
+        List<Users> usersList=usersMapper.selectByExample(example);
+        return usersList.get(0);
+    }
+
 
 }

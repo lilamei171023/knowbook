@@ -23,7 +23,8 @@ public class ExceptionHandle {
     @ResponseBody
     public ResultVo handle(Exception e) {
         if (e instanceof KownBookException) {
-            KownBookException kownBookException = (KownBookException) e;
+//            KownBookException kownBookException = (KownBookException) e;
+            logger.error("【抛出异常】{}", e.getMessage());
             return ResultUtils.error();
         } else
             logger.error("【抛出异常】{}", e.getMessage());

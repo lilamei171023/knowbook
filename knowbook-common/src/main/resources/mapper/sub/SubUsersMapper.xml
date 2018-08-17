@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.excellent.knowbookcommon.dao.sub.SubUsersMapper">
+    <resultMap id="BaseResultMap" type="com.excellent.knowbookcommon.model.pojo.Users">
+        <id column="user_id" jdbcType="VARCHAR" property="userId" />
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="user_name" jdbcType="VARCHAR" property="userName" />
+        <result column="user_number" jdbcType="VARCHAR" property="userNumber" />
+        <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
+        <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+        <result column="user_picture" jdbcType="VARCHAR" property="userPicture" />
+        <result column="user_address_id" jdbcType="VARCHAR" property="userAddressId" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+        <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+        <result column="deteled" jdbcType="INTEGER" property="deteled" />
+        <result column="wallet" jdbcType="DOUBLE" property="wallet" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        user_id, id, user_name, user_number, user_phone, user_password, user_picture, user_address_id,
+        create_time, create_user, update_time, update_user, deteled, wallet
+    </sql>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from users
+    </select>
+</mapper>

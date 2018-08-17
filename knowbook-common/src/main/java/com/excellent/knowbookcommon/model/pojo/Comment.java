@@ -4,9 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Comment implements Serializable {
-    private String commmentId;
+    private String commentId;
 
     private Integer id;
+
+    private String commentInfo;
 
     private String topicId;
 
@@ -22,16 +24,14 @@ public class Comment implements Serializable {
 
     private Integer deleted;
 
-    private String commentInfo;
-
     private static final long serialVersionUID = 1L;
 
-    public String getCommmentId() {
-        return commmentId;
+    public String getCommentId() {
+        return commentId;
     }
 
-    public void setCommmentId(String commmentId) {
-        this.commmentId = commmentId;
+    public void setCommentId(String commentId) {
+        this.commentId = commentId;
     }
 
     public Integer getId() {
@@ -40,6 +40,14 @@ public class Comment implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getCommentInfo() {
+        return commentInfo;
+    }
+
+    public void setCommentInfo(String commentInfo) {
+        this.commentInfo = commentInfo;
     }
 
     public String getTopicId() {
@@ -98,11 +106,4 @@ public class Comment implements Serializable {
         this.deleted = deleted;
     }
 
-    public String getCommentInfo() {
-        return commentInfo;
-    }
-
-    public void setCommentInfo(String commentInfo) {
-        this.commentInfo = commentInfo;
-    }
 }

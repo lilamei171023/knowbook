@@ -1,4 +1,4 @@
-package com.excellent.knowbookcommon.model.po;
+package com.excellent.knowbookcommon.model.dto;
 
 import lombok.Data;
 
