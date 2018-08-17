@@ -2,8 +2,6 @@ package com.excellent.knowbookweb.controller;
 
 import com.excellent.knowbookcommon.model.enums.ResultEnum;
 import com.excellent.knowbookcommon.model.dto.TopicPo;
-import com.excellent.knowbookcommon.model.pojo.Comment;
-import com.excellent.knowbookcommon.model.pojo.Topic;
 import com.excellent.knowbookcommon.model.vo.ResultVo;
 import com.excellent.knowbookcommon.model.vo.TopicDetails;
 import com.excellent.knowbookcommon.model.vo.TopicsVo;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -41,7 +38,7 @@ public class TopicController {
      */
     @RequestMapping(value = "/addTopic", method = RequestMethod.POST)
     public ResultVo addTopic(HttpSession session, @RequestBody TopicPo topicPo) {
-//        session.setAttribute("userId", "001");
+        session.setAttribute("userId", "1507020401");
         topicPo.setUserId(session.getAttribute("userId").toString());
         if (topicService.addOneTopic(topicPo) != 0) {
             return ResultUtils.success("添加话题成功.");
@@ -92,7 +89,7 @@ public class TopicController {
     /**
      * 查询话题详情页面
      */
-    @RequestMapping(value = "/showTopicDetails", method = RequestMethod.POST)
+    @RequestMapping(value = "/showTopicDetails", method = RequestMethod.GET)
     public ResultVo<TopicDetails> showTopicDetails(String topicId) {
         ResultVo resultVo = new ResultVo();
         TopicDetails topicDetails;

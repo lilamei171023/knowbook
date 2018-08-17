@@ -1,7 +1,6 @@
 package com.excellent.knowbookcore.service.impl;
 
 import com.excellent.knowbookcommon.dao.sub.SubUsersMapper;
-import com.excellent.knowbookcommon.dao.UsersMapper;
 import com.excellent.knowbookcommon.model.enums.ResultEnum;
 import com.excellent.knowbookcommon.model.exception.KownBookException;
 import com.excellent.knowbookcommon.model.pojo.Users;

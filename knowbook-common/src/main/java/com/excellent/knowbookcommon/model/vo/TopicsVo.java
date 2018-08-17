@@ -1,11 +1,8 @@
 package com.excellent.knowbookcommon.model.vo;
 
-import com.excellent.knowbookcommon.model.pojo.Comment;
-import com.excellent.knowbookcommon.model.pojo.Topic;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * @User: Rowena

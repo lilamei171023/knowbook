@@ -105,4 +105,5 @@ public class Comment implements Serializable {
     public void setDeleted(Integer deleted) {
         this.deleted = deleted;
     }
+
 }

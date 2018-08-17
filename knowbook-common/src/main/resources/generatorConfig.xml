@@ -54,11 +54,21 @@
             <!--&lt;!&ndash;<domainObjectRenamingRule searchString="_" replaceString=""/>&ndash;&gt;-->
         <!--</table>-->
 
+        <table tableName="topic" domainObjectName="Topic" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="modelOnly" value="false"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="users" domainObjectName="Users" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="modelOnly" value="false"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="book" domainObjectName="Book" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="modelOnly" value="false"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
         <table tableName="comment" domainObjectName="Comment" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
             <property name="modelOnly" value="false"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
-
-
     </context>
 </generatorConfiguration>

@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.UUID;
 
 /**
  * @User: Rowena
@@ -34,7 +33,7 @@ public class CommentController {
      */
     @RequestMapping(value = "/addCommit",method = RequestMethod.POST)
     public ResultVo addCommit(@RequestBody Comment comment, HttpSession session){
-        session.setAttribute("userId",002);
+        session.setAttribute("userId",1507020401);
         comment.setUserId(session.getAttribute("userId").toString());
         comment.setCommentId(CreateIDUtils.CreatId());
         logger.info(comment.getCommentId());

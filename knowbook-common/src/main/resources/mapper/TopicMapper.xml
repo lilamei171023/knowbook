@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.excellent.knowbookcommon.model.pojo.Topic">
     <id column="topic_id" jdbcType="VARCHAR" property="topicId" />
     <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
     <result column="topic_name" jdbcType="VARCHAR" property="topicName" />
     <result column="topic_info" jdbcType="VARCHAR" property="topicInfo" />
     <result column="topic_picture" jdbcType="VARCHAR" property="topicPicture" />
@@ -14,7 +15,6 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
     <result column="deleted" jdbcType="INTEGER" property="deleted" />
-    <result column="label" jdbcType="VARCHAR" property="label" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -75,8 +75,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    topic_id, id, topic_name, topic_info, topic_picture, topic_praise, user_id, create_time, 
-    create_user, update_time, update_user, deleted, label
+    topic_id, id, label, topic_name, topic_info, topic_picture, topic_praise, user_id, 
+    create_time, create_user, update_time, update_user, deleted
   </sql>
   <select id="selectByExample" parameterType="com.excellent.knowbookcommon.model.pojo.TopicExample" resultMap="BaseResultMap">
     select
@@ -107,15 +107,15 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into topic (topic_id, topic_name, topic_info, 
-      topic_picture, topic_praise, user_id, 
-      create_time, create_user, update_time, 
-      update_user, deleted, label
+    insert into topic (topic_id, label, topic_name, 
+      topic_info, topic_picture, topic_praise, 
+      user_id, create_time, create_user, 
+      update_time, update_user, deleted
       )
-    values (#{topicId,jdbcType=VARCHAR}, #{topicName,jdbcType=VARCHAR}, #{topicInfo,jdbcType=VARCHAR}, 
-      #{topicPicture,jdbcType=VARCHAR}, #{topicPraise,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{updateUser,jdbcType=VARCHAR}, #{deleted,jdbcType=INTEGER}, #{label,jdbcType=VARCHAR}
+    values (#{topicId,jdbcType=VARCHAR}, #{label,jdbcType=VARCHAR}, #{topicName,jdbcType=VARCHAR}, 
+      #{topicInfo,jdbcType=VARCHAR}, #{topicPicture,jdbcType=VARCHAR}, #{topicPraise,jdbcType=INTEGER}, 
+      #{userId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, #{deleted,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.excellent.knowbookcommon.model.pojo.Topic">
@@ -126,6 +126,9 @@
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="topicId != null">
         topic_id,
+      </if>
+      <if test="label != null">
+        label,
       </if>
       <if test="topicName != null">
         topic_name,
@@ -157,13 +160,13 @@
       <if test="deleted != null">
         deleted,
       </if>
-      <if test="label != null">
-        label,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="topicId != null">
         #{topicId,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null">
+        #{label,jdbcType=VARCHAR},
       </if>
       <if test="topicName != null">
         #{topicName,jdbcType=VARCHAR},
@@ -195,9 +198,6 @@
       <if test="deleted != null">
         #{deleted,jdbcType=INTEGER},
       </if>
-      <if test="label != null">
-        #{label,jdbcType=VARCHAR},
-      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.excellent.knowbookcommon.model.pojo.TopicExample" resultType="java.lang.Long">
@@ -214,6 +214,9 @@
       </if>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.label != null">
+        label = #{record.label,jdbcType=VARCHAR},
       </if>
       <if test="record.topicName != null">
         topic_name = #{record.topicName,jdbcType=VARCHAR},
@@ -245,9 +248,6 @@
       <if test="record.deleted != null">
         deleted = #{record.deleted,jdbcType=INTEGER},
       </if>
-      <if test="record.label != null">
-        label = #{record.label,jdbcType=VARCHAR},
-      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -257,6 +257,7 @@
     update topic
     set topic_id = #{record.topicId,jdbcType=VARCHAR},
       id = #{record.id,jdbcType=INTEGER},
+      label = #{record.label,jdbcType=VARCHAR},
       topic_name = #{record.topicName,jdbcType=VARCHAR},
       topic_info = #{record.topicInfo,jdbcType=VARCHAR},
       topic_picture = #{record.topicPicture,jdbcType=VARCHAR},
@@ -266,8 +267,7 @@
       create_user = #{record.createUser,jdbcType=VARCHAR},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       update_user = #{record.updateUser,jdbcType=VARCHAR},
-      deleted = #{record.deleted,jdbcType=INTEGER},
-      label = #{record.label,jdbcType=VARCHAR}
+      deleted = #{record.deleted,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -277,6 +277,9 @@
     <set>
       <if test="id != null">
         id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="label != null">
+        label = #{label,jdbcType=VARCHAR},
       </if>
       <if test="topicName != null">
         topic_name = #{topicName,jdbcType=VARCHAR},
@@ -308,15 +311,13 @@
       <if test="deleted != null">
         deleted = #{deleted,jdbcType=INTEGER},
       </if>
-      <if test="label != null">
-        label = #{label,jdbcType=VARCHAR},
-      </if>
     </set>
     where topic_id = #{topicId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.excellent.knowbookcommon.model.pojo.Topic">
     update topic
     set id = #{id,jdbcType=INTEGER},
+      label = #{label,jdbcType=VARCHAR},
       topic_name = #{topicName,jdbcType=VARCHAR},
       topic_info = #{topicInfo,jdbcType=VARCHAR},
       topic_picture = #{topicPicture,jdbcType=VARCHAR},
@@ -326,8 +327,7 @@
       create_user = #{createUser,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       update_user = #{updateUser,jdbcType=VARCHAR},
-      deleted = #{deleted,jdbcType=INTEGER},
-      label = #{label,jdbcType=VARCHAR}
+      deleted = #{deleted,jdbcType=INTEGER}
     where topic_id = #{topicId,jdbcType=VARCHAR}
   </update>
 </mapper>

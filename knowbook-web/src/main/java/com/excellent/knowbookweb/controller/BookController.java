@@ -20,8 +20,9 @@ public class BookController {
     private BookService bookService;
     @RequestMapping(value = "/findTheme",method = RequestMethod.POST)
     public ResultVo findAllTheme(){
-        if(bookService.selectAllBookTheme().size()!=0){
-          return   ResultUtils.success(bookService.selectAllBookTheme());
+       int size= bookService.selectAllBookTheme().size();
+        if(size!=0){
+          return   ResultUtils.success(size);
         }else {
             return ResultUtils.fail("查询失败。");
         }

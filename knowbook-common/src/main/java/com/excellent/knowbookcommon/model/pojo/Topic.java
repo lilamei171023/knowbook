@@ -8,6 +8,8 @@ public class Topic implements Serializable {
 
     private Integer id;
 
+    private String label;
+
     private String topicName;
 
     private String topicInfo;
@@ -28,8 +30,6 @@ public class Topic implements Serializable {
 
     private Integer deleted;
 
-    private String label;
-
     private static final long serialVersionUID = 1L;
 
     public String getTopicId() {
@@ -46,6 +46,14 @@ public class Topic implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
     }
 
     public String getTopicName() {
@@ -126,13 +134,5 @@ public class Topic implements Serializable {
 
     public void setDeleted(Integer deleted) {
         this.deleted = deleted;
-    }
-
-    public String getLabel() {
-        return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
     }
 }

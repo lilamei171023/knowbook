@@ -5,7 +5,6 @@ import com.excellent.knowbookcommon.model.vo.ResultVo;
 import com.excellent.knowbookcore.service.UsersService;
 import com.excellent.knowbookcommon.utils.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;

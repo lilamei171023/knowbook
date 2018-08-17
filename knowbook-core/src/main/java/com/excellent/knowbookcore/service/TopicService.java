@@ -1,15 +1,12 @@
 package com.excellent.knowbookcore.service;
 
 import com.excellent.knowbookcommon.model.dto.TopicPo;
-import com.excellent.knowbookcommon.model.pojo.Comment;
 import com.excellent.knowbookcommon.model.pojo.Topic;
-import com.excellent.knowbookcommon.model.pojo.TopicExample;
 import com.excellent.knowbookcommon.model.pojo.Users;
 import com.excellent.knowbookcommon.model.vo.TopicDetails;
 import com.excellent.knowbookcommon.model.vo.TopicsVo;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @User: Rowena
@@ -26,7 +23,7 @@ public interface TopicService {
 
      Users selectByUserId(Topic topic);
 
-     TopicsVo  topicsValues(Topic topic,Users users);
+     TopicsVo  topicsValues(Topic topic, Users users);
 
      TopicDetails TopicDetails(String topicId);
 

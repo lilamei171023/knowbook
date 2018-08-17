@@ -40,8 +40,9 @@ public class CommentServiceImpl implements CommentService {
         comment.setDeleted(0);
         comment.setUpdateUser("rowena");
         comment.setCreateUser("rowena");
-        if (commentMapper.insertSelective(comment) != 0) {
-            return commentMapper.insertSelective(comment);
+        int selective=commentMapper.insertSelective(comment) ;
+        if (selective!=0) {
+            return selective;
         } else {
             return 0;
         }

@@ -1,6 +1,7 @@
 server:
     port: 8080
-    context-path: /knowbook_prod
+    servlet:
+      context-path: /knowbook_prod
 
 spring:
   datasource:
@@ -8,3 +9,6 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 123456
+    elasticsearch:
+      repositories:
+        enable: true

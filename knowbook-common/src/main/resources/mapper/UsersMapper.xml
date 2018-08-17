@@ -8,6 +8,7 @@
     <result column="user_number" jdbcType="VARCHAR" property="userNumber" />
     <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
     <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+    <result column="wallet" jdbcType="DOUBLE" property="wallet" />
     <result column="user_picture" jdbcType="VARCHAR" property="userPicture" />
     <result column="user_address_id" jdbcType="VARCHAR" property="userAddressId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -15,7 +16,6 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
     <result column="deteled" jdbcType="INTEGER" property="deteled" />
-    <result column="wallet" jdbcType="DOUBLE" property="wallet" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -76,8 +76,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_id, id, user_name, user_number, user_phone, user_password, user_picture, user_address_id, 
-    create_time, create_user, update_time, update_user, deteled, wallet
+    user_id, id, user_name, user_number, user_phone, user_password, wallet, user_picture, 
+    user_address_id, create_time, create_user, update_time, update_user, deteled
   </sql>
   <select id="selectByExample" parameterType="com.excellent.knowbookcommon.model.pojo.UsersExample" resultMap="BaseResultMap">
     select
@@ -109,15 +109,15 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into users (user_id, user_name, user_number, 
-      user_phone, user_password, user_picture, 
-      user_address_id, create_time, create_user, 
-      update_time, update_user, deteled, 
-      wallet)
+      user_phone, user_password, wallet, 
+      user_picture, user_address_id, create_time, 
+      create_user, update_time, update_user, 
+      deteled)
     values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userNumber,jdbcType=VARCHAR}, 
-      #{userPhone,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, #{userPicture,jdbcType=VARCHAR}, 
-      #{userAddressId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, #{deteled,jdbcType=INTEGER}, 
-      #{wallet,jdbcType=DOUBLE})
+      #{userPhone,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, #{wallet,jdbcType=DOUBLE}, 
+      #{userPicture,jdbcType=VARCHAR}, #{userAddressId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, 
+      #{deteled,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.excellent.knowbookcommon.model.pojo.Users">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -140,6 +140,9 @@
       <if test="userPassword != null">
         user_password,
       </if>
+      <if test="wallet != null">
+        wallet,
+      </if>
       <if test="userPicture != null">
         user_picture,
       </if>
@@ -161,9 +164,6 @@
       <if test="deteled != null">
         deteled,
       </if>
-      <if test="wallet != null">
-        wallet,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -180,6 +180,9 @@
       </if>
       <if test="userPassword != null">
         #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="wallet != null">
+        #{wallet,jdbcType=DOUBLE},
       </if>
       <if test="userPicture != null">
         #{userPicture,jdbcType=VARCHAR},
@@ -201,9 +204,6 @@
       </if>
       <if test="deteled != null">
         #{deteled,jdbcType=INTEGER},
-      </if>
-      <if test="wallet != null">
-        #{wallet,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
@@ -234,6 +234,9 @@
       <if test="record.userPassword != null">
         user_password = #{record.userPassword,jdbcType=VARCHAR},
       </if>
+      <if test="record.wallet != null">
+        wallet = #{record.wallet,jdbcType=DOUBLE},
+      </if>
       <if test="record.userPicture != null">
         user_picture = #{record.userPicture,jdbcType=VARCHAR},
       </if>
@@ -255,9 +258,6 @@
       <if test="record.deteled != null">
         deteled = #{record.deteled,jdbcType=INTEGER},
       </if>
-      <if test="record.wallet != null">
-        wallet = #{record.wallet,jdbcType=DOUBLE},
-      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -271,14 +271,14 @@
       user_number = #{record.userNumber,jdbcType=VARCHAR},
       user_phone = #{record.userPhone,jdbcType=VARCHAR},
       user_password = #{record.userPassword,jdbcType=VARCHAR},
+      wallet = #{record.wallet,jdbcType=DOUBLE},
       user_picture = #{record.userPicture,jdbcType=VARCHAR},
       user_address_id = #{record.userAddressId,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       create_user = #{record.createUser,jdbcType=VARCHAR},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       update_user = #{record.updateUser,jdbcType=VARCHAR},
-      deteled = #{record.deteled,jdbcType=INTEGER},
-      wallet = #{record.wallet,jdbcType=DOUBLE}
+      deteled = #{record.deteled,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -301,6 +301,9 @@
       <if test="userPassword != null">
         user_password = #{userPassword,jdbcType=VARCHAR},
       </if>
+      <if test="wallet != null">
+        wallet = #{wallet,jdbcType=DOUBLE},
+      </if>
       <if test="userPicture != null">
         user_picture = #{userPicture,jdbcType=VARCHAR},
       </if>
@@ -322,9 +325,6 @@
       <if test="deteled != null">
         deteled = #{deteled,jdbcType=INTEGER},
       </if>
-      <if test="wallet != null">
-        wallet = #{wallet,jdbcType=DOUBLE},
-      </if>
     </set>
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
@@ -335,14 +335,14 @@
       user_number = #{userNumber,jdbcType=VARCHAR},
       user_phone = #{userPhone,jdbcType=VARCHAR},
       user_password = #{userPassword,jdbcType=VARCHAR},
+      wallet = #{wallet,jdbcType=DOUBLE},
       user_picture = #{userPicture,jdbcType=VARCHAR},
       user_address_id = #{userAddressId,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       create_user = #{createUser,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       update_user = #{updateUser,jdbcType=VARCHAR},
-      deteled = #{deteled,jdbcType=INTEGER},
-      wallet = #{wallet,jdbcType=DOUBLE}
+      deteled = #{deteled,jdbcType=INTEGER}
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -10,6 +10,6 @@ import java.util.List;
  * @Date: 2018/8/7
  * Description:
  */
-public interface SubUsersMapper extends UsersMapper{
+public interface SubUsersMapper extends UsersMapper {
     List<Users> selectAll();
 }

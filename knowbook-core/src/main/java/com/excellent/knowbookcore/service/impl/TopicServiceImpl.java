@@ -1,5 +1,6 @@
 package com.excellent.knowbookcore.service.impl;
 
+import com.excellent.knowbookcommon.dao.TopicMapper;
 import com.excellent.knowbookcommon.dao.UsersMapper;
 import com.excellent.knowbookcommon.model.pojo.*;
 import com.excellent.knowbookcommon.model.vo.CommentVo;
@@ -9,8 +10,6 @@ import com.excellent.knowbookcommon.utils.CreateIDUtils;
 import com.excellent.knowbookcore.service.CommentService;
 import com.excellent.knowbookcore.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.excellent.knowbookcommon.dao.CommentMapper;
-import com.excellent.knowbookcommon.dao.TopicMapper;
 import com.excellent.knowbookcommon.model.dto.TopicPo;
 import com.excellent.knowbookcommon.model.pojo.TopicExample.Criteria;
 import com.excellent.knowbookcore.service.TopicService;
