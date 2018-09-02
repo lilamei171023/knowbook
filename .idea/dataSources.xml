@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="knowbook" uuid="a6edc203-1db2-4671-bfc2-b2f64ae6a436">
+    <data-source source="LOCAL" name="MySQL - knowbook@localhost" uuid="1a3f2a76-15cd-42cc-93d8-fa480eeeda82">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://47.93.248.201:3306/knowbook</jdbc-url>
-      <driver-properties>
-        <property name="autoReconnect" value="true" />
-        <property name="zeroDateTimeBehavior" value="convertToNull" />
-        <property name="tinyInt1isBit" value="false" />
-        <property name="characterEncoding" value="utf8" />
-        <property name="characterSetResults" value="utf8" />
-        <property name="yearIsDateType" value="false" />
-      </driver-properties>
-    </data-source>
-    <data-source source="LOCAL" name="knowbook@localhost" uuid="4aee1f39-0a62-4c4c-a3a8-0ff7d4f57aa0">
-      <driver-ref>mysql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3308/knowbook</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/knowbook</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

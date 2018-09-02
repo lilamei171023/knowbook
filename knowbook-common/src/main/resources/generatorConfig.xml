@@ -5,7 +5,7 @@
 <generatorConfiguration>
     <!-- 导入配置文件 -->
     <!--<properties resource="application-dev.yml"/>-->
-    <classPathEntry location="E:\JAVA\Other\jar\mysql-connector-java-5.1.7-bin.jar"/>
+    <classPathEntry location="F:\open\mysql-connector-java-5.1.7-bin.jar"/>
     <!-- defaultModelType="flat" 设置复合主键时不单独为主键创建实体 -->
     <context id="MySql" defaultModelType="flat" targetRuntime="Mybatis3">
 
@@ -30,9 +30,9 @@
         <!-- 数据库连接，直接通过${}读取application.yml里的配置 -->
         <jdbcConnection
                 driverClass="com.mysql.jdbc.Driver"
-                connectionURL="jdbc:mysql://localhost:3308/knowbook?useSSL=false"
-                userId="root"
-                password="123456"/>
+                connectionURL="jdbc:mysql://47.93.248.201/knowbook?useSSL=false"
+                userId="gao"
+                password="qweasdzxc123"/>
 
         <!-- 生成POJO对象，并将类放到com.excellent.kownbook.model.pojo包下 -->
         <javaModelGenerator targetPackage="com.excellent.knowbookcommon.model.pojo"
@@ -45,8 +45,22 @@
         <javaClientGenerator targetPackage="com.excellent.knowbookcommon.dao" targetProject="src/main/java"
                              type="XMLMAPPER"></javaClientGenerator>
 
+
+
+
+
+        <table tableName="address" domainObjectName="Address" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="modelOnly" value="false"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="attention" domainObjectName="Attention" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="modelOnly" value="false"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
         <!-- table标签可以有多个，至少一个，tableName指定表名，可以使用_和%通配符 -->
-        <table tableName="users" domainObjectName="Users" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="book" domainObjectName="Book" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
             <!-- 是否只生成POJO对象 -->
             <property name="modelOnly" value="false"/>
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
@@ -54,10 +68,45 @@
             <!--<domainObjectRenamingRule searchString="_" replaceString=""/>-->
         </table>
 
-        <!--<table tableName="topic" domainObjectName="Topic" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
-            <!--<property name="modelOnly" value="false"/>-->
-            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-        <!--</table>-->
+        <table tableName="comment" domainObjectName="Comment" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="modelOnly" value="false"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="my_collection" domainObjectName="MyCollection" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
+        <property name="modelOnly" value="false"/>
+        <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+    </table>
+
+        <table tableName="order_detail" domainObjectName="OrderDetail" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="modelOnly" value="false"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="order_total" domainObjectName="OrderTotal" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="modelOnly" value="false"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="sell_book" domainObjectName="SellBook" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="modelOnly" value="false"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="shopping_car" domainObjectName="ShoppingCar" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="modelOnly" value="false"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="topic" domainObjectName="Topic" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="modelOnly" value="false"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="users" domainObjectName="Users" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="modelOnly" value="false"/>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
 
     </context>
 </generatorConfiguration>

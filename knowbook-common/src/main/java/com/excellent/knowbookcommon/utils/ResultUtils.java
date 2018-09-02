@@ -17,7 +17,6 @@ public class ResultUtils {
         resultVo.setData(object);
         return resultVo;
     }
-
     public static ResultVo success() {
         return success(null);
     }
@@ -41,5 +40,23 @@ public class ResultUtils {
         resultVo.setCode(code);
         resultVo.setMsg(msg);
         return resultVo;
+    }
+
+
+    public static ResultVo fail(String string) {
+        ResultVo resultVo = new ResultVo();
+        resultVo.setCode(300+Integer.valueOf(string));
+        if (Integer.valueOf(string)==0){
+            resultVo.setMsg("用户不存在");}
+        else if (Integer.valueOf(string)==2){
+            resultVo.setMsg("密码错误");
+        }else if(Integer.valueOf(string)==3) {
+            resultVo.setMsg("验证码错误");
+        }else {
+            resultVo.setMsg("未知错误，请检查网络");
+        }
+        resultVo.setData(Integer.valueOf(string));
+        return resultVo;
+
     }
 }

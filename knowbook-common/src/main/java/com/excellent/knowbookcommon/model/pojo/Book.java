@@ -10,7 +10,15 @@ public class Book implements Serializable {
 
     private String bookName;
 
-    private Double bookBefroePrice;
+    private String bookInfo;
+
+    private String bookAuthor;
+
+    private String bookQuality;
+
+    private String bookPress;
+
+    private Double bookBeforePrice;
 
     private Double bookNowPrice;
 
@@ -20,9 +28,13 @@ public class Book implements Serializable {
 
     private String bookTheme;
 
-    private String bookLangerages;
+    private String bookLanguage;
+
+    private String bookRemarks;
 
     private Integer bookIsSell;
+
+    private Integer collectionCount;
 
     private Date createTime;
 
@@ -33,10 +45,6 @@ public class Book implements Serializable {
     private String updateUser;
 
     private Integer deteled;
-
-    private String bookInfo;
-
-    private String bookRemarks;
 
     private static final long serialVersionUID = 1L;
 
@@ -64,12 +72,44 @@ public class Book implements Serializable {
         this.bookName = bookName;
     }
 
-    public Double getBookBefroePrice() {
-        return bookBefroePrice;
+    public String getBookInfo() {
+        return bookInfo;
     }
 
-    public void setBookBefroePrice(Double bookBefroePrice) {
-        this.bookBefroePrice = bookBefroePrice;
+    public void setBookInfo(String bookInfo) {
+        this.bookInfo = bookInfo;
+    }
+
+    public String getBookAuthor() {
+        return bookAuthor;
+    }
+
+    public void setBookAuthor(String bookAuthor) {
+        this.bookAuthor = bookAuthor;
+    }
+
+    public String getBookQuality() {
+        return bookQuality;
+    }
+
+    public void setBookQuality(String bookQuality) {
+        this.bookQuality = bookQuality;
+    }
+
+    public String getBookPress() {
+        return bookPress;
+    }
+
+    public void setBookPress(String bookPress) {
+        this.bookPress = bookPress;
+    }
+
+    public Double getBookBeforePrice() {
+        return bookBeforePrice;
+    }
+
+    public void setBookBeforePrice(Double bookBeforePrice) {
+        this.bookBeforePrice = bookBeforePrice;
     }
 
     public Double getBookNowPrice() {
@@ -104,12 +144,20 @@ public class Book implements Serializable {
         this.bookTheme = bookTheme;
     }
 
-    public String getBookLangerages() {
-        return bookLangerages;
+    public String getBookLanguage() {
+        return bookLanguage;
     }
 
-    public void setBookLangerages(String bookLangerages) {
-        this.bookLangerages = bookLangerages;
+    public void setBookLanguage(String bookLanguage) {
+        this.bookLanguage = bookLanguage;
+    }
+
+    public String getBookRemarks() {
+        return bookRemarks;
+    }
+
+    public void setBookRemarks(String bookRemarks) {
+        this.bookRemarks = bookRemarks;
     }
 
     public Integer getBookIsSell() {
@@ -118,6 +166,14 @@ public class Book implements Serializable {
 
     public void setBookIsSell(Integer bookIsSell) {
         this.bookIsSell = bookIsSell;
+    }
+
+    public Integer getCollectionCount() {
+        return collectionCount;
+    }
+
+    public void setCollectionCount(Integer collectionCount) {
+        this.collectionCount = collectionCount;
     }
 
     public Date getCreateTime() {
@@ -158,21 +214,5 @@ public class Book implements Serializable {
 
     public void setDeteled(Integer deteled) {
         this.deteled = deteled;
-    }
-
-    public String getBookInfo() {
-        return bookInfo;
-    }
-
-    public void setBookInfo(String bookInfo) {
-        this.bookInfo = bookInfo;
-    }
-
-    public String getBookRemarks() {
-        return bookRemarks;
-    }
-
-    public void setBookRemarks(String bookRemarks) {
-        this.bookRemarks = bookRemarks;
     }
 }
