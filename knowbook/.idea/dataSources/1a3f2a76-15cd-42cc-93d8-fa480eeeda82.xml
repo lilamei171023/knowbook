@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - knowbook@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="knowbook">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="booksql"/>
+    <schema id="3" name="dbgirl"/>
+    <schema id="4" name="how2java"/>
+    <schema id="5" name="information_schema"/>
+    <schema id="6" name="mysql"/>
+    <schema id="7" name="mysql1"/>
+    <schema id="8" name="performance_schema"/>
+    <schema id="9" name="sorm"/>
+    <schema id="10" name="sys"/>
+    <schema id="11" name="testjdbc"/>
+    <schema id="12" name="testmysql"/>
+    <schema id="13" name="testshiro"/>
+    <schema id="14" name="vote"/>
+    <schema id="15" name="work"/>
+    <table id="16" parent="1" name="address"/>
+    <table id="17" parent="1" name="attention"/>
+    <table id="18" parent="1" name="book"/>
+    <table id="19" parent="1" name="comment"/>
+    <table id="20" parent="1" name="my_collection"/>
+    <table id="21" parent="1" name="order_detail"/>
+    <table id="22" parent="1" name="order_total"/>
+    <table id="23" parent="1" name="sell_book"/>
+    <table id="24" parent="1" name="shopping_car"/>
+    <table id="25" parent="1" name="topic"/>
+    <table id="26" parent="1" name="users"/>
+    <column id="27" parent="16" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="28" parent="16" name="user_id">
+      <comment>用户id，外键</comment>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="29" parent="16" name="address_id">
+      <comment>地址id</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="30" parent="16" name="addressee_info">
+      <comment>地址内容</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(63)|0</data-type>
+    </column>
+    <column id="31" parent="16" name="addressee_phone">
+      <comment>收件人电话</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="32" parent="16" name="addressee-name">
+      <comment>收件人姓名</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="33" parent="16" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="34" parent="16" name="create_user">
+      <comment>创建者</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="35" parent="16" name="update_time">
+      <comment>更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="36" parent="16" name="update_user">
+      <comment>更新者</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="37" parent="16" name="deleted">
+      <comment>删除状态 0未删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <index id="38" parent="16" name="id">
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="39" parent="16" name="user_address">
+      <columns>user_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="40" parent="16" name="PRIMARY">
+      <columns>address_id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="41" parent="16" name="user_address">
+      <columns>user_id</columns>
+      <ref-key>~.users.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <column id="42" parent="17" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="43" parent="17" name="user_id">
+      <comment>用户id</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="44" parent="17" name="followed_user_id">
+      <comment>关注id</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <index id="45" parent="17" name="attention user">
+      <columns>followed_user_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="46" parent="17" name="id">
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="47" parent="17" name="PRIMARY">
+      <columns>user_id
+followed_user_id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="48" parent="17" name="attention_user">
+      <columns>user_id</columns>
+      <ref-key>~.users.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="49" parent="17" name="attention user">
+      <columns>followed_user_id</columns>
+      <ref-key>~.users.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <column id="50" parent="18" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="51" parent="18" name="book_id">
+      <comment>图书id</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="52" parent="18" name="book_name">
+      <comment>图书名</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(63)|0</data-type>
+    </column>
+    <column id="53" parent="18" name="book_info">
+      <comment>图书简介</comment>
+      <mandatory>1</mandatory>
+      <data-type>mediumtext|0</data-type>
+    </column>
+    <column id="54" parent="18" name="book_author">
+      <comment>图书作者</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="55" parent="18" name="book_quality">
+      <comment>图书成色</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(63)|0</data-type>
+    </column>
+    <column id="56" parent="18" name="book_Press">
+      <comment>图书出版社</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(63)|0</data-type>
+    </column>
+    <column id="57" parent="18" name="book_before_price">
+      <comment>原价</comment>
+      <mandatory>1</mandatory>
+      <data-type>double(8,2)|0</data-type>
+    </column>
+    <column id="58" parent="18" name="book_now_price">
+      <comment>现价</comment>
+      <mandatory>1</mandatory>
+      <data-type>double(8,2)|0</data-type>
+    </column>
+    <column id="59" parent="18" name="book_picture">
+      <comment>图书图片</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="60" parent="18" name="book_style">
+      <comment>文体 ；科幻</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(63)|0</data-type>
+    </column>
+    <column id="61" parent="18" name="book_theme">
+      <comment>题材：小说</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(63)|0</data-type>
+    </column>
+    <column id="62" parent="18" name="book_langerages">
+      <comment>语种：国内和国外</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(63)|0</data-type>
+    </column>
+    <column id="63" parent="18" name="book_remarks">
+      <comment>备注</comment>
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="64" parent="18" name="book_is_sell">
+      <comment>卖出状态 默认0，未买出</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="65" parent="18" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="66" parent="18" name="create_user">
+      <comment>创建者</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="67" parent="18" name="update_time">
+      <comment>更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="68" parent="18" name="update_user">
+      <comment>更新者</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="69" parent="18" name="deteled">
+      <comment>删除状态 0未删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <index id="70" parent="18" name="id">
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="71" parent="18" name="PRIMARY">
+      <columns>book_id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="72" parent="19" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="73" parent="19" name="commment_id">
+      <comment>评论id</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="74" parent="19" name="comment_info">
+      <comment>评论内容</comment>
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="75" parent="19" name="topic_id">
+      <comment>话题id</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="76" parent="19" name="user_id">
+      <comment>用户id</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="77" parent="19" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="78" parent="19" name="create_user">
+      <comment>创建者</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="79" parent="19" name="update_user">
+      <comment>更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="80" parent="19" name="update_time">
+      <comment>更新者</comment>
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+      <default-expression>&apos;2018-07-30 00:00:00&apos;</default-expression>
+    </column>
+    <column id="81" parent="19" name="deleted">
+      <comment>删除状态  0未删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <index id="82" parent="19" name="id">
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="83" parent="19" name="topic_comment">
+      <columns>topic_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="84" parent="19" name="PRIMARY">
+      <columns>commment_id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="85" parent="19" name="topic_comment">
+      <columns>topic_id</columns>
+      <ref-key>~.topic.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <column id="86" parent="20" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="87" parent="20" name="user_id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="88" parent="20" name="book_id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <index id="89" parent="20" name="id">
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="90" parent="20" name="my_collection_book">
+      <columns>book_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="91" parent="20" name="PRIMARY">
+      <columns>user_id
+book_id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="92" parent="20" name="my_collection_user">
+      <columns>user_id</columns>
+      <ref-key>~.users.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="93" parent="20" name="my_collection_book">
+      <columns>book_id</columns>
+      <ref-key>~.book.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <column id="94" parent="21" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="95" parent="21" name="order_id">
+      <comment>订单id</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="96" parent="21" name="book_id">
+      <comment>书籍id</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <index id="97" parent="21" name="id">
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="98" parent="21" name="order_detail_book">
+      <columns>book_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="99" parent="21" name="PRIMARY">
+      <columns>order_id
+book_id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="100" parent="21" name="order_detail_order">
+      <columns>order_id</columns>
+      <ref-key>~.order_total.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="101" parent="21" name="order_detail_book">
+      <columns>book_id</columns>
+      <ref-key>~.users.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <column id="102" parent="22" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="103" parent="22" name="order_id">
+      <comment>订单id</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="104" parent="22" name="address_id">
+      <comment>地址id</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="105" parent="22" name="user_id">
+      <comment>用户id</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="106" parent="22" name="order_status">
+      <comment>订单状态</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="107" parent="22" name="total_price">
+      <comment>总价</comment>
+      <mandatory>1</mandatory>
+      <data-type>double(8,2)|0</data-type>
+    </column>
+    <column id="108" parent="22" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="109" parent="22" name="create_user">
+      <comment>创建者</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="110" parent="22" name="update_user">
+      <comment>更新者</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="111" parent="22" name="update_time">
+      <comment>更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="112" parent="22" name="deleted">
+      <comment>删除状态  0未删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <index id="113" parent="22" name="order_total_address">
+      <columns>address_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="114" parent="22" name="order_total_user">
+      <columns>user_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="115" parent="22" name="PRIMARY">
+      <columns>order_id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="116" parent="22" name="order_total_address">
+      <columns>address_id</columns>
+      <ref-key>~.address.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="117" parent="22" name="order_total_user">
+      <columns>user_id</columns>
+      <ref-key>~.users.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <column id="118" parent="23" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="119" parent="23" name="user_id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="120" parent="23" name="book_id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <index id="121" parent="23" name="id">
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="122" parent="23" name="sell_book_book">
+      <columns>book_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="123" parent="23" name="PRIMARY">
+      <columns>user_id
+book_id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="124" parent="23" name="sell_book_user">
+      <columns>user_id</columns>
+      <ref-key>~.users.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="125" parent="23" name="sell_book_book">
+      <columns>book_id</columns>
+      <ref-key>~.book.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <column id="126" parent="24" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="127" parent="24" name="shopping_car_id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="128" parent="24" name="user_id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="129" parent="24" name="book_id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <index id="130" parent="24" name="id">
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="131" parent="24" name="shopping_car_book">
+      <columns>book_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="132" parent="24" name="shopping_car_user">
+      <columns>user_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="133" parent="24" name="PRIMARY">
+      <columns>shopping_car_id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="134" parent="24" name="shopping_car_user">
+      <columns>user_id</columns>
+      <ref-key>~.users.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="135" parent="24" name="shopping_car_book">
+      <columns>book_id</columns>
+      <ref-key>~.book.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <column id="136" parent="25" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="137" parent="25" name="topic_id">
+      <comment>话题id</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="138" parent="25" name="topic_name">
+      <comment>话题名</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="139" parent="25" name="topic_info">
+      <comment>话题内容</comment>
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="140" parent="25" name="topic_picture">
+      <comment>话题图片</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="141" parent="25" name="topic_praise">
+      <comment>点赞</comment>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="142" parent="25" name="user_id">
+      <comment>发布用户id</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="143" parent="25" name="create_time">
+      <comment>创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="144" parent="25" name="create_user">
+      <comment>创建者</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="145" parent="25" name="update_time">
+      <comment>更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="146" parent="25" name="update_user">
+      <comment>更新者</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="147" parent="25" name="deleted">
+      <comment>删除状态 0未删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="148" parent="25" name="label">
+      <comment>话题标签</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <index id="149" parent="25" name="id">
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="150" parent="25" name="user_topic">
+      <columns>user_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="151" parent="25" name="PRIMARY">
+      <columns>topic_id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="152" parent="25" name="user_topic">
+      <columns>user_id</columns>
+      <ref-key>~.users.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <column id="153" parent="26" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="154" parent="26" name="user_id">
+      <comment>用户id</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="155" parent="26" name="user_name">
+      <comment>用户名</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="156" parent="26" name="user_number">
+      <comment>用户账号</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="157" parent="26" name="user_phone">
+      <comment>用户电话</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="158" parent="26" name="user_password">
+      <comment>用户密码</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="159" parent="26" name="user_picture">
+      <comment>用户头像</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="160" parent="26" name="user_address_id">
+      <comment>默认用户地址id</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="161" parent="26" name="create_time">
+      <comment>用户创建时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="162" parent="26" name="create_user">
+      <comment>创建者</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="163" parent="26" name="update_time">
+      <comment>更新时间</comment>
+      <mandatory>1</mandatory>
+      <data-type>timestamp|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="164" parent="26" name="update_user">
+      <comment>更新者</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(31)|0</data-type>
+    </column>
+    <column id="165" parent="26" name="deteled">
+      <comment>删除标识，默认0代表未删除</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="166" parent="26" name="wallet">
+      <comment>钱包余额</comment>
+      <data-type>double(8,2)|0</data-type>
+    </column>
+    <index id="167" parent="26" name="id">
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="168" parent="26" name="PRIMARY">
+      <columns>user_id</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>

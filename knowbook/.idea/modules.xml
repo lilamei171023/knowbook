@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/knowbook.iml" filepath="$PROJECT_DIR$/knowbook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/knowbook-core/knowbook-core.iml" filepath="$PROJECT_DIR$/knowbook-core/knowbook-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/knowbook-web/knowbook-web.iml" filepath="$PROJECT_DIR$/knowbook-web/knowbook-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/knowbook-common/kownbook-common.iml" filepath="$PROJECT_DIR$/knowbook-common/kownbook-common.iml" />
+    </modules>
+  </component>
+</project>
