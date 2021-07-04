@@ -19,13 +19,28 @@ public class ResultUtils {
     }
 
     public static ResultVo success() {
+
         return success(null);
+    }
+
+    public static ResultVo success( String msg) {
+        ResultVo resultVo = new ResultVo();
+        resultVo.setCode(ResultEnum.SUCCESS.getCode());
+        resultVo.setMsg(msg);
+        return resultVo;
     }
 
     public static ResultVo fail() {
         ResultVo resultVo = new ResultVo();
         resultVo.setCode(ResultEnum.FAIL.getCode());
         resultVo.setMsg(ResultEnum.FAIL.getMsg());
+        return resultVo;
+    }
+
+    public static ResultVo fail( String msg) {
+        ResultVo resultVo = new ResultVo();
+        resultVo.setCode(ResultEnum.FAIL.getCode());
+        resultVo.setMsg(msg);
         return resultVo;
     }
 

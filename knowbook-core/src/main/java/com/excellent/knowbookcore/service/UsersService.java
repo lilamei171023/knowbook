@@ -1,5 +1,8 @@
 package com.excellent.knowbookcore.service;
 
+import com.excellent.knowbookcommon.model.pojo.Topic;
+import com.excellent.knowbookcommon.model.pojo.Users;
+
 import java.util.List;
 
 /**
@@ -8,9 +11,21 @@ import java.util.List;
  * Description:
  */
 public interface UsersService {
+
      List<Users> queryUsers(String userId) throws Exception;
 
      Integer insertUser(Users users);
 
-     List<Users> findAll();
+     List<Users> selectAll();
+
+     Users selectUserByUserId(String userId);
+
+     String  saveUsers(Users users);
+
+     List<Users> searchUsers(Integer pageNumber,
+                             Integer pageSize,
+                             String searchContent);
+
+     List<Users> selectAllUsers();
+
 }

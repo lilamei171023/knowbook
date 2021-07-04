@@ -1,34 +1,40 @@
 package com.excellent.knowbookcommon.model.pojo;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@Document(indexName = "topicindex", type = "topic")
 public class Topic implements Serializable {
+    //    @Id
     private String topicId;
 
     private Integer id;
-
+    //   @Field
     private String topicName;
-
-    private String topicPicture;
-
-    private Integer topicPraise;
-
-    private String userId;
-
-    private Date createTime;
-
-    private String createUser;
-
-    private Date updateTime;
-
-    private String updateUser;
-
-    private String deleted;
-
-    private String label;
-
+    //  @Field
     private String topicInfo;
+    //   @Field
+    private String topicPicture;
+    //  @Field
+    private Integer topicPraise;
+    //   @Field
+    private String userId;
+    //   @Field
+    private Date createTime;
+    //  @Field
+    private String createUser;
+    //   @Field
+    private Date updateTime;
+    //   @Field
+    private String updateUser;
+    //   @Field
+    private Integer deleted;
+    //  @Field
+    private String label;
 
     private static final long serialVersionUID = 1L;
 
@@ -54,6 +60,14 @@ public class Topic implements Serializable {
 
     public void setTopicName(String topicName) {
         this.topicName = topicName;
+    }
+
+    public String getTopicInfo() {
+        return topicInfo;
+    }
+
+    public void setTopicInfo(String topicInfo) {
+        this.topicInfo = topicInfo;
     }
 
     public String getTopicPicture() {
@@ -112,11 +126,11 @@ public class Topic implements Serializable {
         this.updateUser = updateUser;
     }
 
-    public String getDeleted() {
+    public Integer getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(String deleted) {
+    public void setDeleted(Integer deleted) {
         this.deleted = deleted;
     }
 
@@ -126,13 +140,5 @@ public class Topic implements Serializable {
 
     public void setLabel(String label) {
         this.label = label;
-    }
-
-    public String getTopicInfo() {
-        return topicInfo;
-    }
-
-    public void setTopicInfo(String topicInfo) {
-        this.topicInfo = topicInfo;
     }
 }

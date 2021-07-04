@@ -5,7 +5,10 @@
     <id column="book_id" jdbcType="VARCHAR" property="bookId" />
     <result column="id" jdbcType="INTEGER" property="id" />
     <result column="book_name" jdbcType="VARCHAR" property="bookName" />
-    <result column="book_befroe_price" jdbcType="DOUBLE" property="bookBefroePrice" />
+    <result column="book_author" jdbcType="VARCHAR" property="bookAuthor" />
+    <result column="book_quality" jdbcType="VARCHAR" property="bookQuality" />
+    <result column="book_Press" jdbcType="VARCHAR" property="bookPress" />
+    <result column="book_before_price" jdbcType="DOUBLE" property="bookBeforePrice" />
     <result column="book_now_price" jdbcType="DOUBLE" property="bookNowPrice" />
     <result column="book_picture" jdbcType="VARCHAR" property="bookPicture" />
     <result column="book_style" jdbcType="VARCHAR" property="bookStyle" />
@@ -22,14 +25,104 @@
     <result column="book_info" jdbcType="LONGVARCHAR" property="bookInfo" />
     <result column="book_remarks" jdbcType="LONGVARCHAR" property="bookRemarks" />
   </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List">
-    book_id, id, book_name, book_befroe_price, book_now_price, book_picture, book_style, 
-    book_theme, book_langerages, book_is_sell, create_time, create_user, update_time, 
-    update_user, deteled
+    book_id, id, book_name, book_author, book_quality, book_Press, book_before_price, 
+    book_now_price, book_picture, book_style, book_theme, book_langerages, book_is_sell, 
+    create_time, create_user, update_time, update_user, deteled
   </sql>
   <sql id="Blob_Column_List">
     book_info, book_remarks
   </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.excellent.knowbookcommon.model.pojo.BookExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from book
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.excellent.knowbookcommon.model.pojo.BookExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from book
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
@@ -46,13 +139,15 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into book (book_id, book_name, book_befroe_price, 
+    insert into book (book_id, book_name, book_author, 
+      book_quality, book_Press, book_before_price, 
       book_now_price, book_picture, book_style, 
       book_theme, book_langerages, book_is_sell, 
       create_time, create_user, update_time, 
       update_user, deteled, book_info, 
       book_remarks)
-    values (#{bookId,jdbcType=VARCHAR}, #{bookName,jdbcType=VARCHAR}, #{bookBefroePrice,jdbcType=DOUBLE}, 
+    values (#{bookId,jdbcType=VARCHAR}, #{bookName,jdbcType=VARCHAR}, #{bookAuthor,jdbcType=VARCHAR}, 
+      #{bookQuality,jdbcType=VARCHAR}, #{bookPress,jdbcType=VARCHAR}, #{bookBeforePrice,jdbcType=DOUBLE}, 
       #{bookNowPrice,jdbcType=DOUBLE}, #{bookPicture,jdbcType=VARCHAR}, #{bookStyle,jdbcType=VARCHAR}, 
       #{bookTheme,jdbcType=VARCHAR}, #{bookLangerages,jdbcType=VARCHAR}, #{bookIsSell,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
@@ -71,8 +166,17 @@
       <if test="bookName != null">
         book_name,
       </if>
-      <if test="bookBefroePrice != null">
-        book_befroe_price,
+      <if test="bookAuthor != null">
+        book_author,
+      </if>
+      <if test="bookQuality != null">
+        book_quality,
+      </if>
+      <if test="bookPress != null">
+        book_Press,
+      </if>
+      <if test="bookBeforePrice != null">
+        book_before_price,
       </if>
       <if test="bookNowPrice != null">
         book_now_price,
@@ -121,8 +225,17 @@
       <if test="bookName != null">
         #{bookName,jdbcType=VARCHAR},
       </if>
-      <if test="bookBefroePrice != null">
-        #{bookBefroePrice,jdbcType=DOUBLE},
+      <if test="bookAuthor != null">
+        #{bookAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="bookQuality != null">
+        #{bookQuality,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPress != null">
+        #{bookPress,jdbcType=VARCHAR},
+      </if>
+      <if test="bookBeforePrice != null">
+        #{bookBeforePrice,jdbcType=DOUBLE},
       </if>
       <if test="bookNowPrice != null">
         #{bookNowPrice,jdbcType=DOUBLE},
@@ -165,6 +278,130 @@
       </if>
     </trim>
   </insert>
+  <select id="countByExample" parameterType="com.excellent.knowbookcommon.model.pojo.BookExample" resultType="java.lang.Long">
+    select count(*) from book
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update book
+    <set>
+      <if test="record.bookId != null">
+        book_id = #{record.bookId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.bookName != null">
+        book_name = #{record.bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookAuthor != null">
+        book_author = #{record.bookAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookQuality != null">
+        book_quality = #{record.bookQuality,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookPress != null">
+        book_Press = #{record.bookPress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookBeforePrice != null">
+        book_before_price = #{record.bookBeforePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bookNowPrice != null">
+        book_now_price = #{record.bookNowPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bookPicture != null">
+        book_picture = #{record.bookPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookStyle != null">
+        book_style = #{record.bookStyle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookTheme != null">
+        book_theme = #{record.bookTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookLangerages != null">
+        book_langerages = #{record.bookLangerages,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookIsSell != null">
+        book_is_sell = #{record.bookIsSell,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createUser != null">
+        create_user = #{record.createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateUser != null">
+        update_user = #{record.updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deteled != null">
+        deteled = #{record.deteled,jdbcType=INTEGER},
+      </if>
+      <if test="record.bookInfo != null">
+        book_info = #{record.bookInfo,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.bookRemarks != null">
+        book_remarks = #{record.bookRemarks,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update book
+    set book_id = #{record.bookId,jdbcType=VARCHAR},
+      id = #{record.id,jdbcType=INTEGER},
+      book_name = #{record.bookName,jdbcType=VARCHAR},
+      book_author = #{record.bookAuthor,jdbcType=VARCHAR},
+      book_quality = #{record.bookQuality,jdbcType=VARCHAR},
+      book_Press = #{record.bookPress,jdbcType=VARCHAR},
+      book_before_price = #{record.bookBeforePrice,jdbcType=DOUBLE},
+      book_now_price = #{record.bookNowPrice,jdbcType=DOUBLE},
+      book_picture = #{record.bookPicture,jdbcType=VARCHAR},
+      book_style = #{record.bookStyle,jdbcType=VARCHAR},
+      book_theme = #{record.bookTheme,jdbcType=VARCHAR},
+      book_langerages = #{record.bookLangerages,jdbcType=VARCHAR},
+      book_is_sell = #{record.bookIsSell,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      create_user = #{record.createUser,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      update_user = #{record.updateUser,jdbcType=VARCHAR},
+      deteled = #{record.deteled,jdbcType=INTEGER},
+      book_info = #{record.bookInfo,jdbcType=LONGVARCHAR},
+      book_remarks = #{record.bookRemarks,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update book
+    set book_id = #{record.bookId,jdbcType=VARCHAR},
+      id = #{record.id,jdbcType=INTEGER},
+      book_name = #{record.bookName,jdbcType=VARCHAR},
+      book_author = #{record.bookAuthor,jdbcType=VARCHAR},
+      book_quality = #{record.bookQuality,jdbcType=VARCHAR},
+      book_Press = #{record.bookPress,jdbcType=VARCHAR},
+      book_before_price = #{record.bookBeforePrice,jdbcType=DOUBLE},
+      book_now_price = #{record.bookNowPrice,jdbcType=DOUBLE},
+      book_picture = #{record.bookPicture,jdbcType=VARCHAR},
+      book_style = #{record.bookStyle,jdbcType=VARCHAR},
+      book_theme = #{record.bookTheme,jdbcType=VARCHAR},
+      book_langerages = #{record.bookLangerages,jdbcType=VARCHAR},
+      book_is_sell = #{record.bookIsSell,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      create_user = #{record.createUser,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      update_user = #{record.updateUser,jdbcType=VARCHAR},
+      deteled = #{record.deteled,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.excellent.knowbookcommon.model.pojo.Book">
     update book
     <set>
@@ -174,8 +411,17 @@
       <if test="bookName != null">
         book_name = #{bookName,jdbcType=VARCHAR},
       </if>
-      <if test="bookBefroePrice != null">
-        book_befroe_price = #{bookBefroePrice,jdbcType=DOUBLE},
+      <if test="bookAuthor != null">
+        book_author = #{bookAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="bookQuality != null">
+        book_quality = #{bookQuality,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPress != null">
+        book_Press = #{bookPress,jdbcType=VARCHAR},
+      </if>
+      <if test="bookBeforePrice != null">
+        book_before_price = #{bookBeforePrice,jdbcType=DOUBLE},
       </if>
       <if test="bookNowPrice != null">
         book_now_price = #{bookNowPrice,jdbcType=DOUBLE},
@@ -223,7 +469,10 @@
     update book
     set id = #{id,jdbcType=INTEGER},
       book_name = #{bookName,jdbcType=VARCHAR},
-      book_befroe_price = #{bookBefroePrice,jdbcType=DOUBLE},
+      book_author = #{bookAuthor,jdbcType=VARCHAR},
+      book_quality = #{bookQuality,jdbcType=VARCHAR},
+      book_Press = #{bookPress,jdbcType=VARCHAR},
+      book_before_price = #{bookBeforePrice,jdbcType=DOUBLE},
       book_now_price = #{bookNowPrice,jdbcType=DOUBLE},
       book_picture = #{bookPicture,jdbcType=VARCHAR},
       book_style = #{bookStyle,jdbcType=VARCHAR},
@@ -243,7 +492,10 @@
     update book
     set id = #{id,jdbcType=INTEGER},
       book_name = #{bookName,jdbcType=VARCHAR},
-      book_befroe_price = #{bookBefroePrice,jdbcType=DOUBLE},
+      book_author = #{bookAuthor,jdbcType=VARCHAR},
+      book_quality = #{bookQuality,jdbcType=VARCHAR},
+      book_Press = #{bookPress,jdbcType=VARCHAR},
+      book_before_price = #{bookBeforePrice,jdbcType=DOUBLE},
       book_now_price = #{bookNowPrice,jdbcType=DOUBLE},
       book_picture = #{bookPicture,jdbcType=VARCHAR},
       book_style = #{bookStyle,jdbcType=VARCHAR},

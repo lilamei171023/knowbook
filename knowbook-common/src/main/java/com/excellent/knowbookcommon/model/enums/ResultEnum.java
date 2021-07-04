@@ -9,7 +9,8 @@ public enum ResultEnum {
     FAIL(101,"fail"),
     SUCCESS(200,"success"),
     ERROR(102,"error"),
-    UknError(103,"UnKnownError");
+    UknError(103,"UnKnownError"),
+    UIDEQUALNULL(104,"userId为空");
 
     private Integer code;
     private String msg;

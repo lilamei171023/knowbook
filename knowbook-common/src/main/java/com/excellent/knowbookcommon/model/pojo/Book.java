@@ -1,47 +1,53 @@
 package com.excellent.knowbookcommon.model.pojo;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@Document(indexName = "bookindex", type = "book")
 public class Book implements Serializable {
+//    @Id
     private String bookId;
 
     private Integer id;
-
+//    @Field
     private String bookName;
-
+//    @Field
     private String bookAuthor;
-
+//    @Field
     private String bookQuality;
-
+//    @Field
     private String bookPress;
-
+//    @Field
     private Double bookBeforePrice;
-
+//    @Field
     private Double bookNowPrice;
-
+//    @Field
     private String bookPicture;
-
+//    @Field
     private String bookStyle;
-
+//    @Field
     private String bookTheme;
-
+//    @Field
     private String bookLangerages;
-
+//    @Field
     private Integer bookIsSell;
-
+//    @Field
     private Date createTime;
-
+//    @Field
     private String createUser;
-
+//    @Field
     private Date updateTime;
-
+//    @Field
     private String updateUser;
-
+//    @Field
     private Integer deteled;
-
+//    @Field
     private String bookInfo;
-
+//    @Field
     private String bookRemarks;
 
     private static final long serialVersionUID = 1L;

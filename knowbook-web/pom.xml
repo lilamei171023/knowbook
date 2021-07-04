@@ -56,6 +56,42 @@
 			<artifactId>org.apache.commons.lang</artifactId>
 			<version>2.6</version>
 		</dependency>
+		<!--部署热启动依赖-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.elasticsearch</groupId>-->
+			<!--<artifactId>elasticsearch</artifactId>-->
+			<!--<version>5.1.1</version>-->
+		<!--</dependency>-->
+		<!--elasticsearch 客户端-->
+		<!--<dependency>-->
+			<!--<groupId>org.elasticsearch.client</groupId>-->
+			<!--<artifactId>transport</artifactId>-->
+			<!--<version>5.1.1</version>-->
+		<!--</dependency>-->
+		<!--ElasticSearch 5.x 根据官网配置maven 依赖, 由于 5.0x的 jar 内部使用的 apache log4日志。-->
+		<!--所以要配置额外的依赖支持 org.apache.logging.log4j。-->
+		<!--log4j版本小于等于2.7最好是2.7-->
+		<!--<dependency>-->
+			<!--<groupId>org.apache.logging.log4j</groupId>-->
+			<!--<artifactId>log4j-core</artifactId>-->
+			<!--<version>2.7</version>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>org.apache.logging.log4j</groupId>-->
+			<!--<artifactId>log4j-api</artifactId>-->
+			<!--<version>2.7</version>-->
+		<!--</dependency>-->
+		<!-- 添加 spring-data-elasticsearch的依赖 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+			<version>1.5.14.RELEASE</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -65,9 +101,6 @@
 				<configuration><!-- 指定该Main Class为全局的唯一入口 -->
 					<mainClass>com.excellent.knowbookweb.KnowbookWebApplication</mainClass>
 				</configuration>
-				<!--<configuration>-->
-					<!--<classifier>exec</classifier>-->
-				<!--</configuration>-->
 				<executions>
 					<execution>
 						<goals>
