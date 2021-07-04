@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @Date: 2018/8/1
  * Description:
  */
-@Aspect
+//@Aspect
 @Component
 public class HttpAspect {
     private final static Logger logger = LoggerFactory.getLogger(HttpAspect.class);

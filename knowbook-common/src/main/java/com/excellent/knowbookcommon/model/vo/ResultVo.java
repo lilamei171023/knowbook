@@ -1,5 +1,9 @@
 package com.excellent.knowbookcommon.model.vo;
 
+import java.lang.reflect.MalformedParameterizedTypeException;
+import java.util.List;
+import java.util.Map;
+
 /**
  * @User: Rowena
  * @Date: 2018/7/31
